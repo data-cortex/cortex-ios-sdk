@@ -14,7 +14,7 @@ Generally you initialize the library in your AppDelegate.m file.
 // Initialize the library with your DC_API_KEY
 [DataCortex sharedInstanceWithAPIKey:YOUR_API_KEY];
 
-// Later, you can get your instance with
+// To get your instance later
 DataCortex *dc = [DataCortex sharedInstance];
 ```
 
