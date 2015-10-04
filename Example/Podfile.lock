@@ -1,0 +1,14 @@
+PODS:
+  - cortex-ios-sdk (0.1.0)
+
+DEPENDENCIES:
+  - cortex-ios-sdk (from `../`)
+
+EXTERNAL SOURCES:
+  cortex-ios-sdk:
+    :path: ../
+
+SPEC CHECKSUMS:
+  cortex-ios-sdk: 177f9305d9b043dabc3d5bf3343df1de8808055a
+
+COCOAPODS: 0.38.2
