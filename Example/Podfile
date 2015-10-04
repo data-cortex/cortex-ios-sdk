@@ -10,5 +10,3 @@ target 'cortex-ios-sdk_Tests', :exclusive => true do
 
   
 end
-
-_link_with 'cortex-ios-sdk'

@@ -1,6 +1,0 @@
-framework module cortex_ios_sdk {
-  umbrella header "cortex-ios-sdk-umbrella.h"
-
-  export *
-  module * { export * }
-}

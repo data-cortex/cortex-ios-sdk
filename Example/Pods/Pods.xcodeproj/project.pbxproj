@@ -7,458 +7,732 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08A0048431F210F4F3AAEBE08F8338DD /* DataCortex.h in Headers */ = {isa = PBXBuildFile; fileRef = B414DE798D35349B71F263C8493F2A16 /* DataCortex.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1E32151E9C3D7A88A50C93DBF547CCA0 /* cortex-ios-sdk-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1B11E3F3DB526C50EAE21570D56996 /* cortex-ios-sdk-dummy.m */; };
-		28435AC77354D7A5E5B990B236CCB4AD /* cortex-ios-sdk.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0293963F8A35449BBB288E362F2237FB /* cortex-ios-sdk.bundle */; };
-		47F50AC7F61AEB74DFDF37A6EEFA4FEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C49DCE29A105D935C8833CD17A48CA /* Foundation.framework */; };
-		557C9790B396AC0635D3A63A27EAD89F /* Pods-cortex-ios-sdk_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E68DB2B806A21ED5C7ABDC9C3EF87EE3 /* Pods-cortex-ios-sdk_Example-dummy.m */; };
-		60A9D84F18D891F1EB4E85746AC5F8E2 /* Pods-cortex-ios-sdk_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0020DCF65386F33477FCBA8794698A /* Pods-cortex-ios-sdk_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6889B313CA2EDC759B1A12EE747BEC8C /* Pods-cortex-ios-sdk_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3EF07154B3604D9909EAD7585BC35A /* Pods-cortex-ios-sdk_Tests-dummy.m */; };
-		7E38F0574433D67F9058AE392086929D /* cortex-ios-sdk-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B9B9390668E914C430DBD50E1295AEF4 /* cortex-ios-sdk-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		82D14FAF16A21A13748D45A03195BB66 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C49DCE29A105D935C8833CD17A48CA /* Foundation.framework */; };
-		89B34C3EA2DF74E81D130BA4B72D60EB /* Pods-cortex-ios-sdk_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 682098ADFB25A9F76E524DFB0CAA9321 /* Pods-cortex-ios-sdk_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E4687BAEDCA33C9ACD0FE5438919537 /* DataCortex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2788395C13DF1EC13468E7BA60347330 /* DataCortex.m */; };
-		D88153457EAAD837D0C843ECCBBE1C97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C49DCE29A105D935C8833CD17A48CA /* Foundation.framework */; };
+		1ABAB977CC3D0C8306554B5D /* cortex-ios-sdk.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9BFD178B75742D7354E26DC9 /* cortex-ios-sdk.bundle */; };
+		23D882027D029F5755C9AFC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E09095AFDF611AFEF5DCEB4 /* Foundation.framework */; };
+		2B5522C3E5164906F2271730 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3020A69C7A5F744924418EEB /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34E47E1132347341406DDF14 /* Pods-cortex-ios-sdk_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0027076BFC0B49751DA6D2AA /* Pods-cortex-ios-sdk_Example-dummy.m */; };
+		3D46C5738C402E737F09FA63 /* DataCortex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681FDA14163E20BFD9FEB7E /* DataCortex.m */; };
+		3D7FA96FBF63C9384ACFF613 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 606DA4DA715AB40E8EE56344 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-dummy.m */; };
+		73003D0C84332748AD1D2FBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E09095AFDF611AFEF5DCEB4 /* Foundation.framework */; };
+		7BB56F3A350A4CF0DEEC2FC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E09095AFDF611AFEF5DCEB4 /* Foundation.framework */; };
+		7E332BB54E7DFBE003031ECB /* Pods-cortex-ios-sdk_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 169A00EB6D94B00DCB20CA84 /* Pods-cortex-ios-sdk_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		88874818BB1E7DFE631A4875 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E09095AFDF611AFEF5DCEB4 /* Foundation.framework */; };
+		A8028DA698B6AE6F4A7C68C3 /* Pods-cortex-ios-sdk_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D150DC083F30FAD771911C27 /* Pods-cortex-ios-sdk_Tests-dummy.m */; };
+		AFA65BAA514534A5B95C75FA /* DataCortex.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DCA73985B048BDA378C2CA0 /* DataCortex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5AE16024ED79FB6DFDDEFB0 /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A9876225311269B6E6B7049D /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C147C5F4B9C8BE5B9867B0A2 /* Pods-cortex-ios-sdk_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 45401630E588572883BEE1CE /* Pods-cortex-ios-sdk_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3AB8FFF7CA1C3F7549653AD /* DataCortex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681FDA14163E20BFD9FEB7E /* DataCortex.m */; };
+		C44475539FC10D9E3204E12F /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC737A83B387EA1FC6194E08 /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-dummy.m */; };
+		C4B511A567520429796D1C8E /* cortex-ios-sdk.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 941C6717F98127F9F7647320 /* cortex-ios-sdk.bundle */; };
+		D1742CAB193997A05AEDF5F1 /* DataCortex.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DCA73985B048BDA378C2CA0 /* DataCortex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		37FCEE66B26F48CBBC15C1397DF63A16 /* PBXContainerItemProxy */ = {
+		7C949BF7B57B31CA68A2B83A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = 02DBF7F4D72E98385ACA435D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 295C5218D3599BE8C3FD80E8CFD146A5;
-			remoteInfo = "cortex-ios-sdk";
+			remoteGlobalIDString = DA5856397704ACCED9F1E36B;
+			remoteInfo = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk";
 		};
-		8E19CB9F4451786C7514415F35924663 /* PBXContainerItemProxy */ = {
+		8DEF4719F06E24527CF4CF7F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = 02DBF7F4D72E98385ACA435D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 295C5218D3599BE8C3FD80E8CFD146A5;
-			remoteInfo = "cortex-ios-sdk";
+			remoteGlobalIDString = 792DC7161F9B270AFA913842;
+			remoteInfo = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-cortex-ios-sdk";
 		};
-		B6694E6384A3134BA44EF55130305FB5 /* PBXContainerItemProxy */ = {
+		C0979FF97F44FC4601EEE844 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = 02DBF7F4D72E98385ACA435D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B06B1550E290B81FCA0C41B82E9763B7;
-			remoteInfo = "cortex-ios-sdk-cortex-ios-sdk";
+			remoteGlobalIDString = 5E6A0B04184AE0412926C70D;
+			remoteInfo = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk";
+		};
+		ED5E5CF44241BF6592F50817 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02DBF7F4D72E98385ACA435D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7F896A662A9F115CB0EA8CBE;
+			remoteInfo = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk-cortex-ios-sdk";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0293963F8A35449BBB288E362F2237FB /* cortex-ios-sdk.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cortex-ios-sdk.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0518291622DCDB0C81D645C586B60A7D /* Pods-cortex-ios-sdk_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-cortex-ios-sdk_Tests.modulemap"; sourceTree = "<group>"; };
-		0E7C6EE856AD73EF8B495A0CD6700E91 /* Pods-cortex-ios-sdk_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-cortex-ios-sdk_Example.release.xcconfig"; sourceTree = "<group>"; };
-		2788395C13DF1EC13468E7BA60347330 /* DataCortex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DataCortex.m; sourceTree = "<group>"; };
-		28D8D761E87CDD22CF4A42AAEBCBDB1E /* Pods-cortex-ios-sdk_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-cortex-ios-sdk_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		3270C597E68081F622C655A21D3728F6 /* Pods-cortex-ios-sdk_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-cortex-ios-sdk_Example-frameworks.sh"; sourceTree = "<group>"; };
-		33FFD01B0AAEE92439E92B6AA1B6D5B8 /* Pods-cortex-ios-sdk_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-cortex-ios-sdk_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		453EA32CD674E151CA34EB076C881C6D /* Pods-cortex-ios-sdk_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-cortex-ios-sdk_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4BE4854CF5480F1213C0FA1C32D3BE28 /* Pods-cortex-ios-sdk_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-cortex-ios-sdk_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4D9ED6435609CF09FA1D865E2E88A1D0 /* Pods-cortex-ios-sdk_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-cortex-ios-sdk_Example-resources.sh"; sourceTree = "<group>"; };
-		5B7D20E68FCCF1259125171350D90CE4 /* cortex-ios-sdk-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "cortex-ios-sdk-Private.xcconfig"; sourceTree = "<group>"; };
-		66E3B60AE17E5F63DCD85FA812222B17 /* cortex-ios-sdk.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "cortex-ios-sdk.modulemap"; sourceTree = "<group>"; };
-		682098ADFB25A9F76E524DFB0CAA9321 /* Pods-cortex-ios-sdk_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-cortex-ios-sdk_Example-umbrella.h"; sourceTree = "<group>"; };
-		78589EAE1E63EBB4B74C68A16EAEA859 /* Pods-cortex-ios-sdk_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-cortex-ios-sdk_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		7E491AF8324E8796269859D5A8B2C570 /* cortex-ios-sdk.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "cortex-ios-sdk.xcconfig"; sourceTree = "<group>"; };
-		A0FB43DA7C487DE67A206C5FBF2C1F39 /* Pods_cortex_ios_sdk_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cortex_ios_sdk_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A50C2150928DD6639F372EA4871B2F92 /* cortex-ios-sdk-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "cortex-ios-sdk-prefix.pch"; sourceTree = "<group>"; };
-		AB17780B0CFB1C7D7D482FDC1E5C1D6F /* Pods_cortex_ios_sdk_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cortex_ios_sdk_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B414DE798D35349B71F263C8493F2A16 /* DataCortex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DataCortex.h; sourceTree = "<group>"; };
-		B6C49DCE29A105D935C8833CD17A48CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		B9B9390668E914C430DBD50E1295AEF4 /* cortex-ios-sdk-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "cortex-ios-sdk-umbrella.h"; sourceTree = "<group>"; };
-		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BE9562B4F646710F661E44DD5AFB36FC /* cortex_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = cortex_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C545473B93EEC964C8E06176677C4D64 /* Pods-cortex-ios-sdk_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-cortex-ios-sdk_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		C818B83A1B891FC920D920DC592E412B /* Pods-cortex-ios-sdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-cortex-ios-sdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		CA3EF07154B3604D9909EAD7585BC35A /* Pods-cortex-ios-sdk_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-cortex-ios-sdk_Tests-dummy.m"; sourceTree = "<group>"; };
-		CE1B11E3F3DB526C50EAE21570D56996 /* cortex-ios-sdk-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "cortex-ios-sdk-dummy.m"; sourceTree = "<group>"; };
-		CFD97AB616DE850A5FC854824482D82D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D6F15583A3F2A4C2BD94A2D139B6958D /* Pods-cortex-ios-sdk_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-cortex-ios-sdk_Example.modulemap"; sourceTree = "<group>"; };
-		E37DF1C45C25ACB65A3A3A56F9029F36 /* Pods-cortex-ios-sdk_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-cortex-ios-sdk_Tests-resources.sh"; sourceTree = "<group>"; };
-		E68DB2B806A21ED5C7ABDC9C3EF87EE3 /* Pods-cortex-ios-sdk_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-cortex-ios-sdk_Example-dummy.m"; sourceTree = "<group>"; };
-		E7D4DDDF0E61362610537C7B73CF7578 /* Pods-cortex-ios-sdk_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-cortex-ios-sdk_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		E878519AC3DC99965AE48A0A467D5419 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E9B0B7D99337063F2AA635BED49397B7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA0020DCF65386F33477FCBA8794698A /* Pods-cortex-ios-sdk_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-cortex-ios-sdk_Tests-umbrella.h"; sourceTree = "<group>"; };
+		0027076BFC0B49751DA6D2AA /* Pods-cortex-ios-sdk_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-cortex-ios-sdk_Example-dummy.m"; sourceTree = "<group>"; };
+		0055F7FDF1D0F936FA695F4F /* Pods_cortex_ios_sdk_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cortex_ios_sdk_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		169A00EB6D94B00DCB20CA84 /* Pods-cortex-ios-sdk_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-cortex-ios-sdk_Example-umbrella.h"; sourceTree = "<group>"; };
+		22D9B60DC3FE53BF06584DD7 /* Pods-cortex-ios-sdk_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-cortex-ios-sdk_Example-frameworks.sh"; sourceTree = "<group>"; };
+		2681FDA14163E20BFD9FEB7E /* DataCortex.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DataCortex.m; sourceTree = "<group>"; };
+		281E0F19DB219C49561CFB82 /* Pods-cortex-ios-sdk_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-cortex-ios-sdk_Example.release.xcconfig"; sourceTree = "<group>"; };
+		3020A69C7A5F744924418EEB /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk-umbrella.h"; sourceTree = "<group>"; };
+		30548C1E7BEC899C52505714 /* Pods-cortex-ios-sdk_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-cortex-ios-sdk_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		30AB84353CE16037B251C1FC /* Pods-cortex-ios-sdk_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-cortex-ios-sdk_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		3753BB57A9C350EFA46F2D50 /* Pods-cortex-ios-sdk_Example-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-cortex-ios-sdk_Example-environment.h"; sourceTree = "<group>"; };
+		3C38555ECC7D4C4935F56FA1 /* Pods-cortex-ios-sdk_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-cortex-ios-sdk_Example-resources.sh"; sourceTree = "<group>"; };
+		3E09095AFDF611AFEF5DCEB4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3FC25B48850FC44A01B2A400 /* Pods-cortex-ios-sdk_Tests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-cortex-ios-sdk_Tests-environment.h"; sourceTree = "<group>"; };
+		45401630E588572883BEE1CE /* Pods-cortex-ios-sdk_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-cortex-ios-sdk_Tests-umbrella.h"; sourceTree = "<group>"; };
+		57D4790343B18E3EF0743EEF /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk-Private.xcconfig"; sourceTree = "<group>"; };
+		59DA2CD2A336DCA941257269 /* cortex_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = cortex_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		606DA4DA715AB40E8EE56344 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk-dummy.m"; sourceTree = "<group>"; };
+		6222912364448549585B8D54 /* Pods-cortex-ios-sdk_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-cortex-ios-sdk_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		6533D3013D042FA17E2C4A64 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Info.plist"; sourceTree = "<group>"; };
+		6956ED12CE404CB8769143BB /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk.xcconfig"; path = "../Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk.xcconfig"; sourceTree = "<group>"; };
+		69A16EAFBE0AF5F8E9A5B585 /* cortex_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = cortex_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B6D25C41936D39BA0A729E5 /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk.modulemap"; path = "../Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk.modulemap"; sourceTree = "<group>"; };
+		6DCA73985B048BDA378C2CA0 /* DataCortex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DataCortex.h; sourceTree = "<group>"; };
+		7389AB41FEB585E403B88A12 /* Pods-cortex-ios-sdk_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-cortex-ios-sdk_Example.modulemap"; sourceTree = "<group>"; };
+		757F87E25EF13017B1E3FFD3 /* Pods-cortex-ios-sdk_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-cortex-ios-sdk_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		77183D84C04871AF400EA7DF /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-prefix.pch"; path = "../Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-prefix.pch"; sourceTree = "<group>"; };
+		7D3F508B6E716FD1B0460C97 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FA97F273A7C964147872632 /* Pods-cortex-ios-sdk_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-cortex-ios-sdk_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7FDCD36F26F84FE2E492BAE1 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk.modulemap"; sourceTree = "<group>"; };
+		8C74B71C67896A092E26946A /* Pods-cortex-ios-sdk_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-cortex-ios-sdk_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		941C6717F98127F9F7647320 /* cortex-ios-sdk.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cortex-ios-sdk.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BFD178B75742D7354E26DC9 /* cortex-ios-sdk.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "cortex-ios-sdk.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A15FAA00B95E778B7C84DF11 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk-prefix.pch"; sourceTree = "<group>"; };
+		A9876225311269B6E6B7049D /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-umbrella.h"; path = "../Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-umbrella.h"; sourceTree = "<group>"; };
+		BB147F46C9EC298C0BC3B0EC /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-Private.xcconfig"; path = "../Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-Private.xcconfig"; sourceTree = "<group>"; };
+		C554B8F3983D39BAE6CCEB32 /* Pods_cortex_ios_sdk_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cortex_ios_sdk_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D150DC083F30FAD771911C27 /* Pods-cortex-ios-sdk_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-cortex-ios-sdk_Tests-dummy.m"; sourceTree = "<group>"; };
+		D484499288AB0A34BBFD381D /* Pods-cortex-ios-sdk_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-cortex-ios-sdk_Tests-resources.sh"; sourceTree = "<group>"; };
+		DB873C6A3D4620DD9D527C11 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk.xcconfig"; sourceTree = "<group>"; };
+		DC8FB2AF07FDCCB092FEF66C /* Pods-cortex-ios-sdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-cortex-ios-sdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		DEFD5B3D311FFDA776410E29 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E28A2FE01C8FCB103BC8CBD8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9E799B1575356EC138DA34D /* Pods-cortex-ios-sdk_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-cortex-ios-sdk_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EA0044C440E4F505C949F582 /* Pods-cortex-ios-sdk_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-cortex-ios-sdk_Tests.modulemap"; sourceTree = "<group>"; };
+		FC737A83B387EA1FC6194E08 /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-dummy.m"; path = "../Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-dummy.m"; sourceTree = "<group>"; };
+		FF8063E944A3E98C531E1D6F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		34AD1BCA290DB8CED09A65D8362570BE /* Frameworks */ = {
+		0C06EC91DC022842E750F6E6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		477168A233CAB0D2DED4F51A66905FEE /* Frameworks */ = {
+		1DAF0A416489725548BDC596 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82D14FAF16A21A13748D45A03195BB66 /* Foundation.framework in Frameworks */,
+				73003D0C84332748AD1D2FBD /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E23C4037493B1BDDD134758F607B853C /* Frameworks */ = {
+		478BE86455E1AC8DEA3790F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47F50AC7F61AEB74DFDF37A6EEFA4FEF /* Foundation.framework in Frameworks */,
+				23D882027D029F5755C9AFC2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E8494036447AB029D8BA405425B400EB /* Frameworks */ = {
+		B5C72628E1651857988BB577 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D88153457EAAD837D0C843ECCBBE1C97 /* Foundation.framework in Frameworks */,
+				7BB56F3A350A4CF0DEEC2FC8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD5474FC21E91D22FB6EF5F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF9CA60BF0C84C461BF79553 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88874818BB1E7DFE631A4875 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		27939F203AB33429A21E88A8310B3374 /* cortex-ios-sdk */ = {
+		0E0621CD19F4EAF1B6BCCF60 /* cortex-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
-				31757386C5D644F956C1F702978C474D /* Pod */,
-				9DFA0A13EB32659F763866C27DB55EE8 /* Support Files */,
+				99C8EADF35D4FA9DB5C03B0A /* Pod */,
+				971B9B456BA059FD13C71225 /* Support Files */,
 			);
 			name = "cortex-ios-sdk";
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		31757386C5D644F956C1F702978C474D /* Pod */ = {
+		21A86C447FF840D496E6D71F = {
 			isa = PBXGroup;
 			children = (
-				EDF31D6499890B7E40F253EE20C53A0F /* Classes */,
-			);
-			path = Pod;
-			sourceTree = "<group>";
-		};
-		53F661C0CA7190D2CF05023FB33D61E4 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				B6C49DCE29A105D935C8833CD17A48CA /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
-				E8DECB79F7F2BC9634879BD9ABA6AE13 /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
-				BD36635C8F9D247B7B67F21E3F3DFFF4 /* Targets Support Files */,
+				DEFD5B3D311FFDA776410E29 /* Podfile */,
+				75272AC5FA15E5167661C99F /* Development Pods */,
+				52DC4AC10C0BE246849A9289 /* Frameworks */,
+				78110CA5D7001A24B4D2CF42 /* Products */,
+				C5CDCA3AE0509A4CD185D041 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		9DFA0A13EB32659F763866C27DB55EE8 /* Support Files */ = {
+		3E8DF7A5786FAF48906BAD16 /* Pods-cortex-ios-sdk_Example */ = {
 			isa = PBXGroup;
 			children = (
-				CFD97AB616DE850A5FC854824482D82D /* Info.plist */,
-				66E3B60AE17E5F63DCD85FA812222B17 /* cortex-ios-sdk.modulemap */,
-				7E491AF8324E8796269859D5A8B2C570 /* cortex-ios-sdk.xcconfig */,
-				5B7D20E68FCCF1259125171350D90CE4 /* cortex-ios-sdk-Private.xcconfig */,
-				CE1B11E3F3DB526C50EAE21570D56996 /* cortex-ios-sdk-dummy.m */,
-				A50C2150928DD6639F372EA4871B2F92 /* cortex-ios-sdk-prefix.pch */,
-				B9B9390668E914C430DBD50E1295AEF4 /* cortex-ios-sdk-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/cortex-ios-sdk";
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				53F661C0CA7190D2CF05023FB33D61E4 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BD36635C8F9D247B7B67F21E3F3DFFF4 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C8655D0A1DFC6AB9D0DFAD6656BE41ED /* Pods-cortex-ios-sdk_Example */,
-				D4F7FBD5CBC5E6427B84B016E04A65A5 /* Pods-cortex-ios-sdk_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		C8655D0A1DFC6AB9D0DFAD6656BE41ED /* Pods-cortex-ios-sdk_Example */ = {
-			isa = PBXGroup;
-			children = (
-				E9B0B7D99337063F2AA635BED49397B7 /* Info.plist */,
-				D6F15583A3F2A4C2BD94A2D139B6958D /* Pods-cortex-ios-sdk_Example.modulemap */,
-				453EA32CD674E151CA34EB076C881C6D /* Pods-cortex-ios-sdk_Example-acknowledgements.markdown */,
-				28D8D761E87CDD22CF4A42AAEBCBDB1E /* Pods-cortex-ios-sdk_Example-acknowledgements.plist */,
-				E68DB2B806A21ED5C7ABDC9C3EF87EE3 /* Pods-cortex-ios-sdk_Example-dummy.m */,
-				3270C597E68081F622C655A21D3728F6 /* Pods-cortex-ios-sdk_Example-frameworks.sh */,
-				4D9ED6435609CF09FA1D865E2E88A1D0 /* Pods-cortex-ios-sdk_Example-resources.sh */,
-				682098ADFB25A9F76E524DFB0CAA9321 /* Pods-cortex-ios-sdk_Example-umbrella.h */,
-				78589EAE1E63EBB4B74C68A16EAEA859 /* Pods-cortex-ios-sdk_Example.debug.xcconfig */,
-				0E7C6EE856AD73EF8B495A0CD6700E91 /* Pods-cortex-ios-sdk_Example.release.xcconfig */,
+				FF8063E944A3E98C531E1D6F /* Info.plist */,
+				7389AB41FEB585E403B88A12 /* Pods-cortex-ios-sdk_Example.modulemap */,
+				7FA97F273A7C964147872632 /* Pods-cortex-ios-sdk_Example-acknowledgements.markdown */,
+				757F87E25EF13017B1E3FFD3 /* Pods-cortex-ios-sdk_Example-acknowledgements.plist */,
+				0027076BFC0B49751DA6D2AA /* Pods-cortex-ios-sdk_Example-dummy.m */,
+				3753BB57A9C350EFA46F2D50 /* Pods-cortex-ios-sdk_Example-environment.h */,
+				22D9B60DC3FE53BF06584DD7 /* Pods-cortex-ios-sdk_Example-frameworks.sh */,
+				3C38555ECC7D4C4935F56FA1 /* Pods-cortex-ios-sdk_Example-resources.sh */,
+				169A00EB6D94B00DCB20CA84 /* Pods-cortex-ios-sdk_Example-umbrella.h */,
+				30AB84353CE16037B251C1FC /* Pods-cortex-ios-sdk_Example.debug.xcconfig */,
+				281E0F19DB219C49561CFB82 /* Pods-cortex-ios-sdk_Example.release.xcconfig */,
 			);
 			name = "Pods-cortex-ios-sdk_Example";
 			path = "Target Support Files/Pods-cortex-ios-sdk_Example";
 			sourceTree = "<group>";
 		};
-		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
+		52DC4AC10C0BE246849A9289 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A0FB43DA7C487DE67A206C5FBF2C1F39 /* Pods_cortex_ios_sdk_Example.framework */,
-				AB17780B0CFB1C7D7D482FDC1E5C1D6F /* Pods_cortex_ios_sdk_Tests.framework */,
-				0293963F8A35449BBB288E362F2237FB /* cortex-ios-sdk.bundle */,
-				BE9562B4F646710F661E44DD5AFB36FC /* cortex_ios_sdk.framework */,
+				A8256CB248E0FC313B850800 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		75272AC5FA15E5167661C99F /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E0621CD19F4EAF1B6BCCF60 /* cortex-ios-sdk */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		78110CA5D7001A24B4D2CF42 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0055F7FDF1D0F936FA695F4F /* Pods_cortex_ios_sdk_Example.framework */,
+				C554B8F3983D39BAE6CCEB32 /* Pods_cortex_ios_sdk_Tests.framework */,
+				941C6717F98127F9F7647320 /* cortex-ios-sdk.bundle */,
+				9BFD178B75742D7354E26DC9 /* cortex-ios-sdk.bundle */,
+				59DA2CD2A336DCA941257269 /* cortex_ios_sdk.framework */,
+				69A16EAFBE0AF5F8E9A5B585 /* cortex_ios_sdk.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D4F7FBD5CBC5E6427B84B016E04A65A5 /* Pods-cortex-ios-sdk_Tests */ = {
+		971B9B456BA059FD13C71225 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E878519AC3DC99965AE48A0A467D5419 /* Info.plist */,
-				0518291622DCDB0C81D645C586B60A7D /* Pods-cortex-ios-sdk_Tests.modulemap */,
-				4BE4854CF5480F1213C0FA1C32D3BE28 /* Pods-cortex-ios-sdk_Tests-acknowledgements.markdown */,
-				33FFD01B0AAEE92439E92B6AA1B6D5B8 /* Pods-cortex-ios-sdk_Tests-acknowledgements.plist */,
-				CA3EF07154B3604D9909EAD7585BC35A /* Pods-cortex-ios-sdk_Tests-dummy.m */,
-				C545473B93EEC964C8E06176677C4D64 /* Pods-cortex-ios-sdk_Tests-frameworks.sh */,
-				E37DF1C45C25ACB65A3A3A56F9029F36 /* Pods-cortex-ios-sdk_Tests-resources.sh */,
-				EA0020DCF65386F33477FCBA8794698A /* Pods-cortex-ios-sdk_Tests-umbrella.h */,
-				E7D4DDDF0E61362610537C7B73CF7578 /* Pods-cortex-ios-sdk_Tests.debug.xcconfig */,
-				C818B83A1B891FC920D920DC592E412B /* Pods-cortex-ios-sdk_Tests.release.xcconfig */,
+				7D3F508B6E716FD1B0460C97 /* Info.plist */,
+				6533D3013D042FA17E2C4A64 /* Info.plist */,
+				7FDCD36F26F84FE2E492BAE1 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk.modulemap */,
+				DB873C6A3D4620DD9D527C11 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk.xcconfig */,
+				57D4790343B18E3EF0743EEF /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-Private.xcconfig */,
+				606DA4DA715AB40E8EE56344 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-dummy.m */,
+				A15FAA00B95E778B7C84DF11 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-prefix.pch */,
+				3020A69C7A5F744924418EEB /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-umbrella.h */,
+				6B6D25C41936D39BA0A729E5 /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk.modulemap */,
+				6956ED12CE404CB8769143BB /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk.xcconfig */,
+				BB147F46C9EC298C0BC3B0EC /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-Private.xcconfig */,
+				FC737A83B387EA1FC6194E08 /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-dummy.m */,
+				77183D84C04871AF400EA7DF /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-prefix.pch */,
+				A9876225311269B6E6B7049D /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Pods-cortex-ios-sdk_Example-cortex-ios-sdk";
+			sourceTree = "<group>";
+		};
+		97A908EA4C5AF9BEB12A168D /* Pods-cortex-ios-sdk_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E28A2FE01C8FCB103BC8CBD8 /* Info.plist */,
+				EA0044C440E4F505C949F582 /* Pods-cortex-ios-sdk_Tests.modulemap */,
+				E9E799B1575356EC138DA34D /* Pods-cortex-ios-sdk_Tests-acknowledgements.markdown */,
+				8C74B71C67896A092E26946A /* Pods-cortex-ios-sdk_Tests-acknowledgements.plist */,
+				D150DC083F30FAD771911C27 /* Pods-cortex-ios-sdk_Tests-dummy.m */,
+				3FC25B48850FC44A01B2A400 /* Pods-cortex-ios-sdk_Tests-environment.h */,
+				30548C1E7BEC899C52505714 /* Pods-cortex-ios-sdk_Tests-frameworks.sh */,
+				D484499288AB0A34BBFD381D /* Pods-cortex-ios-sdk_Tests-resources.sh */,
+				45401630E588572883BEE1CE /* Pods-cortex-ios-sdk_Tests-umbrella.h */,
+				6222912364448549585B8D54 /* Pods-cortex-ios-sdk_Tests.debug.xcconfig */,
+				DC8FB2AF07FDCCB092FEF66C /* Pods-cortex-ios-sdk_Tests.release.xcconfig */,
 			);
 			name = "Pods-cortex-ios-sdk_Tests";
 			path = "Target Support Files/Pods-cortex-ios-sdk_Tests";
 			sourceTree = "<group>";
 		};
-		E8DECB79F7F2BC9634879BD9ABA6AE13 /* Development Pods */ = {
+		99C8EADF35D4FA9DB5C03B0A /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				27939F203AB33429A21E88A8310B3374 /* cortex-ios-sdk */,
+				B9C83C6BFAE4364978998FC8 /* Classes */,
 			);
-			name = "Development Pods";
+			path = Pod;
 			sourceTree = "<group>";
 		};
-		EDF31D6499890B7E40F253EE20C53A0F /* Classes */ = {
+		A8256CB248E0FC313B850800 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				B414DE798D35349B71F263C8493F2A16 /* DataCortex.h */,
-				2788395C13DF1EC13468E7BA60347330 /* DataCortex.m */,
+				3E09095AFDF611AFEF5DCEB4 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		B9C83C6BFAE4364978998FC8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6DCA73985B048BDA378C2CA0 /* DataCortex.h */,
+				2681FDA14163E20BFD9FEB7E /* DataCortex.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		C5CDCA3AE0509A4CD185D041 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E8DF7A5786FAF48906BAD16 /* Pods-cortex-ios-sdk_Example */,
+				97A908EA4C5AF9BEB12A168D /* Pods-cortex-ios-sdk_Tests */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		19B0BF57B77A0B6B9C1AAE247A4AA85E /* Headers */ = {
+		18F84C9AE92635A7BE910558 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89B34C3EA2DF74E81D130BA4B72D60EB /* Pods-cortex-ios-sdk_Example-umbrella.h in Headers */,
+				D1742CAB193997A05AEDF5F1 /* DataCortex.h in Headers */,
+				B5AE16024ED79FB6DFDDEFB0 /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		860ABD15697A409CCF1AD294221DB072 /* Headers */ = {
+		C43F82E77EFF971DF404E402 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08A0048431F210F4F3AAEBE08F8338DD /* DataCortex.h in Headers */,
-				7E38F0574433D67F9058AE392086929D /* cortex-ios-sdk-umbrella.h in Headers */,
+				7E332BB54E7DFBE003031ECB /* Pods-cortex-ios-sdk_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C7A0DECA3607F97AE45819EF84C8450F /* Headers */ = {
+		DB9315D168921E046CA11A7A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60A9D84F18D891F1EB4E85746AC5F8E2 /* Pods-cortex-ios-sdk_Tests-umbrella.h in Headers */,
+				AFA65BAA514534A5B95C75FA /* DataCortex.h in Headers */,
+				2B5522C3E5164906F2271730 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9525C9D2C7BC4F1A89D2835 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C147C5F4B9C8BE5B9867B0A2 /* Pods-cortex-ios-sdk_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		295C5218D3599BE8C3FD80E8CFD146A5 /* cortex-ios-sdk */ = {
+		53707F7672C4443C1E38B5F3 /* Pods-cortex-ios-sdk_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 23DC928A140C1FB9A3C2C3B760224175 /* Build configuration list for PBXNativeTarget "cortex-ios-sdk" */;
+			buildConfigurationList = 45D878AFF0AA4F59F47E9133 /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Tests" */;
 			buildPhases = (
-				C4D755DF3F3DD98912CF88F07EC4FCC6 /* Sources */,
-				E23C4037493B1BDDD134758F607B853C /* Frameworks */,
-				129595E4CDD7A9A15CC849E9011B8026 /* Resources */,
-				860ABD15697A409CCF1AD294221DB072 /* Headers */,
+				49984F8C903D0C792ACCE604 /* Sources */,
+				EF9CA60BF0C84C461BF79553 /* Frameworks */,
+				F9525C9D2C7BC4F1A89D2835 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				13ECFFE7F4C6BDFCB621A3D987F75E6C /* PBXTargetDependency */,
-			);
-			name = "cortex-ios-sdk";
-			productName = "cortex-ios-sdk";
-			productReference = BE9562B4F646710F661E44DD5AFB36FC /* cortex_ios_sdk.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		58C9D21DB1C7AE3B1D9B8085FCA615DF /* Pods-cortex-ios-sdk_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 19E125F2F25153DCBD96C65E6DC86E3E /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Tests" */;
-			buildPhases = (
-				55A25B7E8D33F19D4155A42FC1A8D831 /* Sources */,
-				477168A233CAB0D2DED4F51A66905FEE /* Frameworks */,
-				C7A0DECA3607F97AE45819EF84C8450F /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				085885D5829D59288526C8C6862D14DD /* PBXTargetDependency */,
+				1CC2CAF1A4CCFB55B271CCDB /* PBXTargetDependency */,
 			);
 			name = "Pods-cortex-ios-sdk_Tests";
 			productName = "Pods-cortex-ios-sdk_Tests";
-			productReference = AB17780B0CFB1C7D7D482FDC1E5C1D6F /* Pods_cortex_ios_sdk_Tests.framework */;
+			productReference = C554B8F3983D39BAE6CCEB32 /* Pods_cortex_ios_sdk_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		8C3F472013B7BB7A0F69BC858B011B1B /* Pods-cortex-ios-sdk_Example */ = {
+		5E6A0B04184AE0412926C70D /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F7814E6D2624875931575B05A055391C /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Example" */;
+			buildConfigurationList = DE31A5F998A58E73793B8668 /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Example-cortex-ios-sdk" */;
 			buildPhases = (
-				78B0821315F164FEEA9949825B13CA8F /* Sources */,
-				E8494036447AB029D8BA405425B400EB /* Frameworks */,
-				19B0BF57B77A0B6B9C1AAE247A4AA85E /* Headers */,
+				4AA371F6A394FE5B242C3768 /* Sources */,
+				478BE86455E1AC8DEA3790F1 /* Frameworks */,
+				78D5C53F3EB6F39264DAE778 /* Resources */,
+				DB9315D168921E046CA11A7A /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BF8D485F9EE26E74F28E548BAA9D631D /* PBXTargetDependency */,
+				732215A5537AF3F5898C9D3D /* PBXTargetDependency */,
+			);
+			name = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk";
+			productName = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk";
+			productReference = 69A16EAFBE0AF5F8E9A5B585 /* cortex_ios_sdk.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5F21460CB368BABAF4A02816 /* Pods-cortex-ios-sdk_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA009FE47A27E253620BA538 /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Example" */;
+			buildPhases = (
+				4B1731061F69F8C0D504A01E /* Sources */,
+				1DAF0A416489725548BDC596 /* Frameworks */,
+				C43F82E77EFF971DF404E402 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5EBD9F3C79BE3CD08745A8F7 /* PBXTargetDependency */,
 			);
 			name = "Pods-cortex-ios-sdk_Example";
 			productName = "Pods-cortex-ios-sdk_Example";
-			productReference = A0FB43DA7C487DE67A206C5FBF2C1F39 /* Pods_cortex_ios_sdk_Example.framework */;
+			productReference = 0055F7FDF1D0F936FA695F4F /* Pods_cortex_ios_sdk_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B06B1550E290B81FCA0C41B82E9763B7 /* cortex-ios-sdk-cortex-ios-sdk */ = {
+		792DC7161F9B270AFA913842 /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-cortex-ios-sdk */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DBFB6246EDB1BA909458B5C21273355A /* Build configuration list for PBXNativeTarget "cortex-ios-sdk-cortex-ios-sdk" */;
+			buildConfigurationList = 438C04C556A1BE8F0484E6E9 /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-cortex-ios-sdk" */;
 			buildPhases = (
-				6D35A50A3D527CACFD7C0C267FD2716A /* Sources */,
-				34AD1BCA290DB8CED09A65D8362570BE /* Frameworks */,
-				774C21A68B1C9276B1C5E453BDDD8621 /* Resources */,
+				02FCDF900780CBA2F4D251CA /* Sources */,
+				CD5474FC21E91D22FB6EF5F8 /* Frameworks */,
+				23363EE44DDD0716A29E9A67 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "cortex-ios-sdk-cortex-ios-sdk";
-			productName = "cortex-ios-sdk-cortex-ios-sdk";
-			productReference = 0293963F8A35449BBB288E362F2237FB /* cortex-ios-sdk.bundle */;
+			name = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-cortex-ios-sdk";
+			productName = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-cortex-ios-sdk";
+			productReference = 9BFD178B75742D7354E26DC9 /* cortex-ios-sdk.bundle */;
 			productType = "com.apple.product-type.bundle";
+		};
+		7F896A662A9F115CB0EA8CBE /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-cortex-ios-sdk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B46677A1C5C5DCB6B5D2235 /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Example-cortex-ios-sdk-cortex-ios-sdk" */;
+			buildPhases = (
+				790B7A3ACDC265D4B5C213B6 /* Sources */,
+				0C06EC91DC022842E750F6E6 /* Frameworks */,
+				751BF62EC0F409E4B3866374 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk-cortex-ios-sdk";
+			productName = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk-cortex-ios-sdk";
+			productReference = 941C6717F98127F9F7647320 /* cortex-ios-sdk.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		DA5856397704ACCED9F1E36B /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2BDF466A7DA2C033FFD015D /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk" */;
+			buildPhases = (
+				B2592616F8DD03244FEC1E03 /* Sources */,
+				B5C72628E1651857988BB577 /* Frameworks */,
+				FC1554D44EED10357ECCDC01 /* Resources */,
+				18F84C9AE92635A7BE910558 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				914F44097923171FAADB8932 /* PBXTargetDependency */,
+			);
+			name = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk";
+			productName = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk";
+			productReference = 59DA2CD2A336DCA941257269 /* cortex_ios_sdk.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		02DBF7F4D72E98385ACA435D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0510;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 9E4B7041821B66FA65F289E2 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = CCA510CFBEA2D207524CDA0D73C3B561 /* Products */;
+			mainGroup = 21A86C447FF840D496E6D71F;
+			productRefGroup = 78110CA5D7001A24B4D2CF42 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8C3F472013B7BB7A0F69BC858B011B1B /* Pods-cortex-ios-sdk_Example */,
-				58C9D21DB1C7AE3B1D9B8085FCA615DF /* Pods-cortex-ios-sdk_Tests */,
-				295C5218D3599BE8C3FD80E8CFD146A5 /* cortex-ios-sdk */,
-				B06B1550E290B81FCA0C41B82E9763B7 /* cortex-ios-sdk-cortex-ios-sdk */,
+				5F21460CB368BABAF4A02816 /* Pods-cortex-ios-sdk_Example */,
+				5E6A0B04184AE0412926C70D /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk */,
+				7F896A662A9F115CB0EA8CBE /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-cortex-ios-sdk */,
+				53707F7672C4443C1E38B5F3 /* Pods-cortex-ios-sdk_Tests */,
+				DA5856397704ACCED9F1E36B /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk */,
+				792DC7161F9B270AFA913842 /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-cortex-ios-sdk */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		129595E4CDD7A9A15CC849E9011B8026 /* Resources */ = {
+		23363EE44DDD0716A29E9A67 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28435AC77354D7A5E5B990B236CCB4AD /* cortex-ios-sdk.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		774C21A68B1C9276B1C5E453BDDD8621 /* Resources */ = {
+		751BF62EC0F409E4B3866374 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78D5C53F3EB6F39264DAE778 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4B511A567520429796D1C8E /* cortex-ios-sdk.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC1554D44EED10357ECCDC01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1ABAB977CC3D0C8306554B5D /* cortex-ios-sdk.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		55A25B7E8D33F19D4155A42FC1A8D831 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6889B313CA2EDC759B1A12EE747BEC8C /* Pods-cortex-ios-sdk_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6D35A50A3D527CACFD7C0C267FD2716A /* Sources */ = {
+		02FCDF900780CBA2F4D251CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		78B0821315F164FEEA9949825B13CA8F /* Sources */ = {
+		49984F8C903D0C792ACCE604 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				557C9790B396AC0635D3A63A27EAD89F /* Pods-cortex-ios-sdk_Example-dummy.m in Sources */,
+				A8028DA698B6AE6F4A7C68C3 /* Pods-cortex-ios-sdk_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C4D755DF3F3DD98912CF88F07EC4FCC6 /* Sources */ = {
+		4AA371F6A394FE5B242C3768 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E4687BAEDCA33C9ACD0FE5438919537 /* DataCortex.m in Sources */,
-				1E32151E9C3D7A88A50C93DBF547CCA0 /* cortex-ios-sdk-dummy.m in Sources */,
+				C3AB8FFF7CA1C3F7549653AD /* DataCortex.m in Sources */,
+				3D7FA96FBF63C9384ACFF613 /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B1731061F69F8C0D504A01E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34E47E1132347341406DDF14 /* Pods-cortex-ios-sdk_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		790B7A3ACDC265D4B5C213B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2592616F8DD03244FEC1E03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D46C5738C402E737F09FA63 /* DataCortex.m in Sources */,
+				C44475539FC10D9E3204E12F /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		085885D5829D59288526C8C6862D14DD /* PBXTargetDependency */ = {
+		1CC2CAF1A4CCFB55B271CCDB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "cortex-ios-sdk";
-			target = 295C5218D3599BE8C3FD80E8CFD146A5 /* cortex-ios-sdk */;
-			targetProxy = 37FCEE66B26F48CBBC15C1397DF63A16 /* PBXContainerItemProxy */;
+			name = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk";
+			target = DA5856397704ACCED9F1E36B /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk */;
+			targetProxy = 7C949BF7B57B31CA68A2B83A /* PBXContainerItemProxy */;
 		};
-		13ECFFE7F4C6BDFCB621A3D987F75E6C /* PBXTargetDependency */ = {
+		5EBD9F3C79BE3CD08745A8F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "cortex-ios-sdk-cortex-ios-sdk";
-			target = B06B1550E290B81FCA0C41B82E9763B7 /* cortex-ios-sdk-cortex-ios-sdk */;
-			targetProxy = B6694E6384A3134BA44EF55130305FB5 /* PBXContainerItemProxy */;
+			name = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk";
+			target = 5E6A0B04184AE0412926C70D /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk */;
+			targetProxy = C0979FF97F44FC4601EEE844 /* PBXContainerItemProxy */;
 		};
-		BF8D485F9EE26E74F28E548BAA9D631D /* PBXTargetDependency */ = {
+		732215A5537AF3F5898C9D3D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "cortex-ios-sdk";
-			target = 295C5218D3599BE8C3FD80E8CFD146A5 /* cortex-ios-sdk */;
-			targetProxy = 8E19CB9F4451786C7514415F35924663 /* PBXContainerItemProxy */;
+			name = "Pods-cortex-ios-sdk_Example-cortex-ios-sdk-cortex-ios-sdk";
+			target = 7F896A662A9F115CB0EA8CBE /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-cortex-ios-sdk */;
+			targetProxy = ED5E5CF44241BF6592F50817 /* PBXContainerItemProxy */;
+		};
+		914F44097923171FAADB8932 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-cortex-ios-sdk";
+			target = 792DC7161F9B270AFA913842 /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-cortex-ios-sdk */;
+			targetProxy = 8DEF4719F06E24527CF4CF7F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		03CA91998D6773EC5D02B3DB87B8353E /* Release */ = {
+		0274066AE0E1BD364A3BD295 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6222912364448549585B8D54 /* Pods-cortex-ios-sdk_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests/Pods-cortex-ios-sdk_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_cortex_ios_sdk_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		185B58D65FFC632B45698F4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57D4790343B18E3EF0743EEF /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-cortex-ios-sdk_Example-cortex-ios-sdk/Pods-cortex-ios-sdk_Example-cortex-ios-sdk-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-cortex-ios-sdk_Example-cortex-ios-sdk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-cortex-ios-sdk_Example-cortex-ios-sdk/Pods-cortex-ios-sdk_Example-cortex-ios-sdk.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = cortex_ios_sdk;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		36C986543091E20E3878DF24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC8FB2AF07FDCCB092FEF66C /* Pods-cortex-ios-sdk_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests/Pods-cortex-ios-sdk_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_cortex_ios_sdk_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		464659F124CBB8BD3E015597 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57D4790343B18E3EF0743EEF /* Pods-cortex-ios-sdk_Example-cortex-ios-sdk-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-cortex-ios-sdk_Example-cortex-ios-sdk/Pods-cortex-ios-sdk_Example-cortex-ios-sdk-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-cortex-ios-sdk_Example-cortex-ios-sdk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-cortex-ios-sdk_Example-cortex-ios-sdk/Pods-cortex-ios-sdk_Example-cortex-ios-sdk.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = cortex_ios_sdk;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4AD86567909664969FEA5767 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 281E0F19DB219C49561CFB82 /* Pods-cortex-ios-sdk_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-cortex-ios-sdk_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-cortex-ios-sdk_Example/Pods-cortex-ios-sdk_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_cortex_ios_sdk_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4C08192089DD6C4E83123E30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -485,14 +759,89 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		0B57334D6C23DADAA4F7D802A5760EB2 /* Debug */ = {
+		5062AA3C6F389621D0E7515D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-cortex-ios-sdk_Example";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = "cortex-ios-sdk";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		7B7E357D7BCF6121602C4C29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB147F46C9EC298C0BC3B0EC /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = cortex_ios_sdk;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		928C384CEF5C9AF1FDBD6F2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-cortex-ios-sdk_Tests";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = "cortex-ios-sdk";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		98A741A9C8493D2D8DD55F02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-cortex-ios-sdk_Tests";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = "cortex-ios-sdk";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		9EB8C2B349ADA00536B726DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-cortex-ios-sdk_Example";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = "cortex-ios-sdk";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		BC117E85B7797E79A7AF11A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -524,43 +873,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		1B1365B71681DD6C57F10B1397CCC661 /* Debug */ = {
+		D3A89A8FBB70A99E720C2381 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7D20E68FCCF1259125171350D90CE4 /* cortex-ios-sdk-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.1.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/cortex-ios-sdk/cortex-ios-sdk-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/cortex-ios-sdk/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/cortex-ios-sdk/cortex-ios-sdk.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = cortex_ios_sdk;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2EFBA3A76A3B35B42F1065EC4EA68146 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C818B83A1B891FC920D920DC592E412B /* Pods-cortex-ios-sdk_Tests.release.xcconfig */;
+			baseConfigurationReference = BB147F46C9EC298C0BC3B0EC /* Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -569,16 +891,14 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests/Pods-cortex-ios-sdk_Tests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk/Pods-cortex-ios-sdk_Tests-cortex-ios-sdk.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_cortex_ios_sdk_Tests;
+				PRODUCT_NAME = cortex_ios_sdk;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -587,21 +907,9 @@
 			};
 			name = Release;
 		};
-		53AE7DE134C6628DD05CD06B3E6E03DB /* Debug */ = {
+		FCA230786371913792C568F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7D20E68FCCF1259125171350D90CE4 /* cortex-ios-sdk-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = "cortex-ios-sdk";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		82F645E2F7869EB62927E1EBAE7FDFA6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78589EAE1E63EBB4B74C68A16EAEA859 /* Pods-cortex-ios-sdk_Example.debug.xcconfig */;
+			baseConfigurationReference = 30AB84353CE16037B251C1FC /* Pods-cortex-ios-sdk_Example.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -627,153 +935,74 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		9408B98C6E5AE1EAE80A12B3FE60D681 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7D4DDDF0E61362610537C7B73CF7578 /* Pods-cortex-ios-sdk_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-cortex-ios-sdk_Tests/Pods-cortex-ios-sdk_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_cortex_ios_sdk_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		BE1C10D3D15B02F505822920B89DFFE1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7D20E68FCCF1259125171350D90CE4 /* cortex-ios-sdk-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = "cortex-ios-sdk";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		E5F71077A9DF9D7587804E7FD8A1C00D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E7C6EE856AD73EF8B495A0CD6700E91 /* Pods-cortex-ios-sdk_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-cortex-ios-sdk_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-cortex-ios-sdk_Example/Pods-cortex-ios-sdk_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_cortex_ios_sdk_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		FCBF74147DF0822B0D7956A9318CE5A3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7D20E68FCCF1259125171350D90CE4 /* cortex-ios-sdk-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.1.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/cortex-ios-sdk/cortex-ios-sdk-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/cortex-ios-sdk/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/cortex-ios-sdk/cortex-ios-sdk.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = cortex_ios_sdk;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		19E125F2F25153DCBD96C65E6DC86E3E /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Tests" */ = {
+		438C04C556A1BE8F0484E6E9 /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk-cortex-ios-sdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9408B98C6E5AE1EAE80A12B3FE60D681 /* Debug */,
-				2EFBA3A76A3B35B42F1065EC4EA68146 /* Release */,
+				98A741A9C8493D2D8DD55F02 /* Debug */,
+				928C384CEF5C9AF1FDBD6F2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23DC928A140C1FB9A3C2C3B760224175 /* Build configuration list for PBXNativeTarget "cortex-ios-sdk" */ = {
+		45D878AFF0AA4F59F47E9133 /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1B1365B71681DD6C57F10B1397CCC661 /* Debug */,
-				FCBF74147DF0822B0D7956A9318CE5A3 /* Release */,
+				0274066AE0E1BD364A3BD295 /* Debug */,
+				36C986543091E20E3878DF24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		8B46677A1C5C5DCB6B5D2235 /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Example-cortex-ios-sdk-cortex-ios-sdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0B57334D6C23DADAA4F7D802A5760EB2 /* Debug */,
-				03CA91998D6773EC5D02B3DB87B8353E /* Release */,
+				9EB8C2B349ADA00536B726DB /* Debug */,
+				5062AA3C6F389621D0E7515D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DBFB6246EDB1BA909458B5C21273355A /* Build configuration list for PBXNativeTarget "cortex-ios-sdk-cortex-ios-sdk" */ = {
+		9E4B7041821B66FA65F289E2 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				53AE7DE134C6628DD05CD06B3E6E03DB /* Debug */,
-				BE1C10D3D15B02F505822920B89DFFE1 /* Release */,
+				BC117E85B7797E79A7AF11A4 /* Debug */,
+				4C08192089DD6C4E83123E30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F7814E6D2624875931575B05A055391C /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Example" */ = {
+		A2BDF466A7DA2C033FFD015D /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Tests-cortex-ios-sdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				82F645E2F7869EB62927E1EBAE7FDFA6 /* Debug */,
-				E5F71077A9DF9D7587804E7FD8A1C00D /* Release */,
+				7B7E357D7BCF6121602C4C29 /* Debug */,
+				D3A89A8FBB70A99E720C2381 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA009FE47A27E253620BA538 /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FCA230786371913792C568F7 /* Debug */,
+				4AD86567909664969FEA5767 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE31A5F998A58E73793B8668 /* Build configuration list for PBXNativeTarget "Pods-cortex-ios-sdk_Example-cortex-ios-sdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				464659F124CBB8BD3E015597 /* Debug */,
+				185B58D65FFC632B45698F4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = 02DBF7F4D72E98385ACA435D /* Project object */;
 }
