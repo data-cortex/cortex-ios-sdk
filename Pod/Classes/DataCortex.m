@@ -8,10 +8,8 @@
 
 #import "DataCortex.h"
 
-static int const DELAY_RETRY_INTERVAL = 30;
-static int const HTTP_TIMEOUT = 60.0;
-static NSString* const EVENTS_LIST = @"events_list";
-static NSString* const API_BASE_URL = @"https://api.data-cortex.com";
+
+
 
 @implementation DataCortex {
     NSLock *running_lock;
@@ -21,6 +19,14 @@ static NSString* const API_BASE_URL = @"https://api.data-cortex.com";
     NSString *base_url;
 }
 
+@synthesize userTag = _userTag;
+@synthesize facebookTag = _facebookTag;
+@synthesize twitterTag = _twitterTag;
+@synthesize googleTag = _googleTag;
+@synthesize gameCenterTag = _gameCenterTag;
+@synthesize groupTag = _groupTag;
+@synthesize serverVer = _serverVer;
+@synthesize configVer = _configVer;
 
 - (id)initWithAPIKey: (NSString*) apiKey ForOrg:(NSString*)Org {
     self = [super init];
@@ -299,6 +305,102 @@ static NSString* const API_BASE_URL = @"https://api.data-cortex.com";
      }];
     
     
+}
+
+- (NSString*) userTag {
+    return _userTag;
+}
+- (NSString*) facebookTag {
+    return _facebookTag;
+}
+-(NSString*) twitterTag {
+    return _twitterTag;
+}
+-(NSString*) googleTag {
+    return _googleTag;
+}
+-(NSString*) gameCenterTag {
+    return _gameCenterTag;
+}
+-(NSString*) groupTag {
+    return _groupTag;
+}
+-(NSString*) serverVer {
+    return _serverVer;
+}
+-(NSString*) configVer {
+    return _configVer;
+}
+
+- (void)setUserTag:(NSString*)newValue {
+    
+    if ([newValue length] > TAG_MAX_LENGTH){
+        _userTag = [NSString stringWithString:
+                    [newValue substringWithRange:NSMakeRange(0, TAG_MAX_LENGTH)]];
+    }
+    else{
+        _userTag = [NSString stringWithString:newValue];
+    }
+}
+
+-(void) setFacebookTag:(NSString*) newValue {
+    if([newValue length] > TAG_MAX_LENGTH){
+        _facebookTag = [NSString stringWithString:
+                        [newValue substringWithRange:NSMakeRange(0,TAG_MAX_LENGTH)]];
+    }
+    else {
+        _facebookTag = [NSString stringWithString: newValue];
+    }
+}
+-(void) setTwitterTag:(NSString*) newValue {
+    if([newValue length] > TAG_MAX_LENGTH){
+        _twitterTag = [NSString stringWithString:
+                       [newValue substringWithRange:NSMakeRange(0,TAG_MAX_LENGTH)]];
+    }
+    else {
+        _twitterTag = [NSString stringWithString: newValue];
+    }
+}
+-(void) setGoogleTag:(NSString*) newValue {
+    if([newValue length] > TAG_MAX_LENGTH){
+        _googleTag = [NSString stringWithString:
+                      [newValue substringWithRange:NSMakeRange(0,TAG_MAX_LENGTH)]];
+    }
+    else {
+        _googleTag = [NSString stringWithString: newValue];
+    }
+}
+-(void) setGameCenterTag:(NSString*) newValue {
+    // whats the limit?
+    _gameCenterTag = [NSString stringWithString: newValue];
+    
+}
+-(void) setGroupTag:(NSString*) newValue {
+    if([newValue length] > GROUP_TAG_MAX_LENGTH){
+        _groupTag = [NSString stringWithString:
+                     [newValue substringWithRange:NSMakeRange(0,GROUP_TAG_MAX_LENGTH)]];
+    }
+    else {
+        _groupTag = [NSString stringWithString: newValue];
+    }
+}
+-(void) setServerVer:(NSString*) newValue {
+    if([newValue length] > SERVER_VER_MAX_LENGTH){
+        _serverVer = [NSString stringWithString:
+                      [newValue substringWithRange:NSMakeRange(0,SERVER_VER_MAX_LENGTH)]];
+    }
+    else {
+        _serverVer = [NSString stringWithString: newValue];
+    }
+}
+-(void) setConfigVer:(NSString*) newValue {
+    if([newValue length] > CONFIG_VER_MAX_LENGTH){
+        _configVer = [NSString stringWithString:
+                      [newValue substringWithRange:NSMakeRange(0,CONFIG_VER_MAX_LENGTH)]];
+    }
+    else {
+        _configVer = [NSString stringWithString: newValue];
+    }
 }
 
 @end
