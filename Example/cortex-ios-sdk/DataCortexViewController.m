@@ -24,6 +24,8 @@
     DataCortex *dc = [[DataCortex alloc] initWithAPIKey:@"dYlBxjMTYkXadqhnOyHnjo7iGb5bW1y0"
                                                  ForOrg:@"rs_example"];
     
+    [dc setUserTag:@"ybolanos"];
+    
     [dc eventWithProperties:@{
                               @"kingdom": @"abcdefghigklmnopqrstuvxzyabcdefghigklmnopqrstuvxzy",
                               @"phylum": @"phylum",
@@ -35,6 +37,7 @@
                               }];
     
     [dc listEvents];
+    [dc clearEvents];
     
 }
 

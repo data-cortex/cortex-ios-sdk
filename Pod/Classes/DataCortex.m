@@ -165,6 +165,14 @@ static NSString* const API_BASE_URL = @"https://api.data-cortex.com";
     
 }
 
+-(void) clearEvents {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *events_list = [defaults arrayForKey:EVENTS_LIST];
+    [self removeEvents:events_list];
+    
+}
+
 -(void) listEvents {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -199,8 +207,27 @@ static NSString* const API_BASE_URL = @"https://api.data-cortex.com";
     [request setObject:uuid forKey:@"device_tag"];
     [request setObject:events forKey:@"events"];
     [request setObject:deviceType forKey:@"device_type"];
-    [request setObject:@"iPhone OS" forKey:@"os"];
-    [request setObject:@"ybolanos" forKey:@"user_tag"];
+    [request setObject:@"iPhone OS" forKey:@"os"]; // need to figure this out
+    
+    
+    if ([self userTag])
+        [request setObject:[self userTag] forKey:@"user_tag"];
+    if([self facebookTag])
+        [request setObject:[self facebookTag] forKey:@"facebook_tag"];
+    if([self twitterTag])
+        [request setObject:[self twitterTag] forKey:@"twitter_tag"];
+    if([self googleTag])
+        [request setObject:[self googleTag] forKey:@"google_tag"];
+    if([self gameCenterTag])
+        [request setObject:[self gameCenterTag] forKey:@"game_center_tag"];
+    if([self groupTag])
+        [request setObject:[self groupTag] forKey:@"group_tag"];
+    if([self serverVer])
+        [request setObject:[self serverVer] forKey:@"server_ver"];
+    if([self configVer])
+        [request setObject:[self configVer] forKey:@"config_ver"];
+
+    
     [request setObject:@"en" forKey:@"language"];
 
     

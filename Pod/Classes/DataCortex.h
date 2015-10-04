@@ -12,8 +12,18 @@
 
 @interface DataCortex : NSObject
 
+@property NSString* userTag;
+@property NSString* facebookTag;
+@property NSString* twitterTag;
+@property NSString* googleTag;
+@property NSString* gameCenterTag;
+@property NSString* groupTag;
+@property NSString* serverVer;
+@property NSString* configVer;
+
 - (id)initWithAPIKey: (NSString*) apiKey ForOrg:(NSString*)Org;
 -(void) eventWithProperties:(NSDictionary*) properties;
 -(void) listEvents;
+-(void) clearEvents;
 
 @end
