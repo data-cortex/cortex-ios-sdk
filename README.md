@@ -171,8 +171,5 @@ DataCortex *dc = [DataCortex sharedInstance];
 
 
 
-## Author
-
-Yanko Bolanos, y@rem7.com
 
 ## License
