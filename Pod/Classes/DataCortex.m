@@ -271,20 +271,20 @@
     NSDictionary *dcRequest = [self generateDCRequestWithEvents:events];
     
     
+    NSString *urlString = [NSString stringWithFormat:@"%@/1/track?current_time=%@",
+                           base_url, [self getISO8601Date]];
     
-    NSURL *url = [NSURL URLWithString: @"http://localhost:3000"];
+    NSURL *url = [NSURL URLWithString: urlString];
     
     NSMutableURLRequest *request = [NSMutableURLRequest
                                     requestWithURL:url
                                     cachePolicy:NSURLRequestUseProtocolCachePolicy
                                     timeoutInterval:HTTP_TIMEOUT];
     
+    //TODO: check error
     NSError *error = nil;
     NSData *requestBody = [NSJSONSerialization dataWithJSONObject:dcRequest
                                                           options:0 error:&error];
-    
-    //TODO: check error
-    NSLog(@"%@", [[NSString alloc] initWithData:requestBody encoding:NSUTF8StringEncoding]);
     
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
