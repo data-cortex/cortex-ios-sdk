@@ -21,8 +21,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    DataCortex *dc = [[DataCortex alloc] initWithAPIKey:@"dYlBxjMTYkXadqhnOyHnjo7iGb5bW1y0"
-                                                 ForOrg:@"rs_example"];
+    DataCortex *dc = [DataCortex sharedInstanceWithAPIKey:@"dYlBxjMTYkXadqhnOyHnjo7iGb5bW1y0"
+                                                    forOrg:@"rs_example"];
     
     [dc setUserTag:@"ybolanos"];
     

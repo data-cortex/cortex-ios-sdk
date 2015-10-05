@@ -7,9 +7,7 @@
 //
 
 #import "DataCortex.h"
-
-
-
+@import AdSupport;
 
 @implementation DataCortex {
     NSLock *running_lock;
@@ -17,6 +15,7 @@
     NSString *api_key;
     NSString *org;
     NSString *base_url;
+    NSString *advertisingIdentifier;
 }
 
 @synthesize userTag = _userTag;
@@ -28,22 +27,46 @@
 @synthesize serverVer = _serverVer;
 @synthesize configVer = _configVer;
 
-- (id)initWithAPIKey: (NSString*) apiKey ForOrg:(NSString*)Org {
-    self = [super init];
-    if (self)
++ (id) sharedInstanceWithAPIKey:(NSString*) apiKey forOrg: (NSString*) Org {
+    
+    static DataCortex *sharedDataCortex = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedDataCortex = [[self alloc] initWithAPIKey: apiKey forOrg:Org];
+    });
+    return sharedDataCortex;
+}
+
+- (id)initWithAPIKey: (NSString*) apiKey forOrg:(NSString*)Org {
+    
+    if (self = [super init])
     {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        advertisingIdentifier = [defaults objectForKey:@"advertisingIdentifier"];
+
+        if (!advertisingIdentifier) {
+            ASIdentifierManager *asiManager = [ASIdentifierManager sharedManager];
+            advertisingIdentifier = [NSString stringWithString: [[asiManager advertisingIdentifier] UUIDString] ];
+            [defaults setObject:advertisingIdentifier forKey:@"advertisingIdentifier"];
+            [defaults synchronize];
+        }
+        
         events_lock = [[NSLock alloc] init];
         running_lock = [[NSLock alloc] init];
         api_key = [NSString stringWithString:apiKey];
         org = [NSString stringWithString:Org];
         base_url = [NSString stringWithFormat:@"%@/%@", API_BASE_URL, org];
-        NSLog(@"base_url: %@", base_url);
         [self initializeEventList];
-        [self pushEvents];
+        [self sendEvents];
         
     }
     
     return self;
+}
+
+- (void) dealloc {
+    // never called.
 }
 
 -(void) initializeEventList {
@@ -95,7 +118,7 @@
     return iso8601String;
 }
 
--(void) pushEvents {
+-(void) sendEvents {
     
     BOOL acquired = [running_lock tryLock];
     if (acquired) {
@@ -108,10 +131,10 @@
                 if (httpStatus >= 200 && httpStatus <= 299) {
                     [self removeEvents: events_list];
                     [running_lock unlock];
-                    [self pushEvents];
+                    [self sendEvents];
                 } else {
                     [running_lock unlock];
-                    [self performSelector:@selector(pushEvents) withObject:nil afterDelay:DELAY_RETRY_INTERVAL];
+                    [self performSelector:@selector(sendEvents) withObject:nil afterDelay:DELAY_RETRY_INTERVAL];
                 }
             }];
         } else {
@@ -134,7 +157,7 @@
     
     [events_lock unlock];
     
-    [self pushEvents];
+    [self sendEvents];
     
 }
 
@@ -201,7 +224,7 @@
     
     NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
-    NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSString *uuid = advertisingIdentifier;
     NSString *deviceFamily = [UIDevice currentDevice].model;
     NSString *deviceType = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
     
@@ -246,6 +269,9 @@
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     NSDictionary *dcRequest = [self generateDCRequestWithEvents:events];
+    
+    
+    
     NSURL *url = [NSURL URLWithString: @"http://localhost:3000"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest

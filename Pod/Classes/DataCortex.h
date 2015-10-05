@@ -31,9 +31,9 @@ static int const GROUP_TAG_MAX_LENGTH = 32;
 @property NSString* serverVer;
 @property NSString* configVer;
 
-- (id)initWithAPIKey: (NSString*) apiKey ForOrg:(NSString*)Org;
--(void) eventWithProperties:(NSDictionary*) properties;
--(void) listEvents;
--(void) clearEvents;
++ (id) sharedInstanceWithAPIKey:(NSString*) apiKey forOrg: (NSString*) Org;
+- (void) eventWithProperties:(NSDictionary*) properties;
+- (void) listEvents;
+- (void) clearEvents;
 
 @end
