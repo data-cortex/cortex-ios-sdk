@@ -99,7 +99,7 @@
     }
     
     [event setObject:[self getISO8601Date] forKey:@"event_datetime"];
-    [event setObject:@"install" forKey:@"type"];
+    [event setObject:@"event" forKey:@"type"];
     
     [self addEvent:event];
     
