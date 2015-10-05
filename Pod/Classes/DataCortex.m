@@ -237,6 +237,7 @@
     [request setObject:events forKey:@"events"];
     [request setObject:deviceType forKey:@"device_type"];
     [request setObject:@"iPhone OS" forKey:@"os"]; // need to figure this out
+    [request setObject:@"iTunes" forKey:@"marketplace"];
     
     
     if ([self userTag])
