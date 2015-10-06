@@ -43,7 +43,7 @@ static DataCortex *g_sharedDataCortex = nil;
 }
 
 
-- (DataCortex *)initWithAPIKey:(NSString *)apiKey forOrg:(NSString *)org {
+- (DataCortex *)initWithAPIKey:(NSString *)apiKey forOrg:(NSString *)initOrg {
     
     if (self = [super init])
     {
@@ -61,8 +61,8 @@ static DataCortex *g_sharedDataCortex = nil;
         events_lock = [[NSLock alloc] init];
         running_lock = [[NSLock alloc] init];
         api_key = [NSString stringWithString:apiKey];
-        org = [NSString stringWithString:org];
-        base_url = [NSString stringWithFormat:@"%@/%@", API_BASE_URL, org];
+        org = [NSString stringWithString:initOrg];
+        base_url = [NSString stringWithFormat:@"%@/%@",API_BASE_URL,org];
         [self initializeEventList];
         [self sendEvents];
         
