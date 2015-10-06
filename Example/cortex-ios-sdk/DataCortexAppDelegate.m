@@ -8,7 +8,7 @@
 
 #import "DataCortexAppDelegate.h"
 
-#import "DataCortex.h"
+#import <DataCortex/DataCortex.h>
 
 
 @implementation DataCortexAppDelegate
@@ -17,7 +17,7 @@
 {
     [DataCortex sharedInstanceWithAPIKey:@"dYlBxjMTYkXadqhnOyHnjo7iGb5bW1y0"
         forOrg:@"rs_example"];
-    
+
     return YES;
 }
 

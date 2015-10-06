@@ -8,7 +8,7 @@
 
 #import "DataCortexViewController.h"
 
-#import "DataCortex.h"
+#import <DataCortex/DataCortex.h>
 
 @interface DataCortexViewController ()
 
