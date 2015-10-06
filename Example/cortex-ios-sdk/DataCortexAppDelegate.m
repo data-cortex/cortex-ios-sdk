@@ -8,11 +8,16 @@
 
 #import "DataCortexAppDelegate.h"
 
+#import "DataCortex.h"
+
+
 @implementation DataCortexAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [DataCortex sharedInstanceWithAPIKey:@"dYlBxjMTYkXadqhnOyHnjo7iGb5bW1y0"
+        forOrg:@"rs_example"];
+    
     return YES;
 }
 

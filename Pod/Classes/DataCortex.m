@@ -27,17 +27,23 @@
 @synthesize serverVer = _serverVer;
 @synthesize configVer = _configVer;
 
-+ (id) sharedInstanceWithAPIKey:(NSString*) apiKey forOrg: (NSString*) Org {
-    
-    static DataCortex *sharedDataCortex = nil;
+static DataCortex *g_sharedDataCortex = nil;
+
++ (DataCortex *)sharedInstanceWithAPIKey:(NSString *)apiKey forOrg:(NSString *) org
+{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedDataCortex = [[self alloc] initWithAPIKey: apiKey forOrg:Org];
+        g_sharedDataCortex = [[self alloc] initWithAPIKey:apiKey forOrg:org];
     });
-    return sharedDataCortex;
+    return g_sharedDataCortex;
+}
++ (DataCortex *)sharedInstance
+{
+    return g_sharedDataCortex;
 }
 
-- (id)initWithAPIKey: (NSString*) apiKey forOrg:(NSString*)Org {
+
+- (DataCortex *)initWithAPIKey:(NSString *)apiKey forOrg:(NSString *)org {
     
     if (self = [super init])
     {
@@ -55,7 +61,7 @@
         events_lock = [[NSLock alloc] init];
         running_lock = [[NSLock alloc] init];
         api_key = [NSString stringWithString:apiKey];
-        org = [NSString stringWithString:Org];
+        org = [NSString stringWithString:org];
         base_url = [NSString stringWithFormat:@"%@/%@", API_BASE_URL, org];
         [self initializeEventList];
         [self sendEvents];

@@ -22,18 +22,19 @@ static int const GROUP_TAG_MAX_LENGTH = 32;
 
 @interface DataCortex : NSObject
 
-@property NSString* userTag;
-@property NSString* facebookTag;
-@property NSString* twitterTag;
-@property NSString* googleTag;
-@property NSString* gameCenterTag;
-@property NSString* groupTag;
-@property NSString* serverVer;
-@property NSString* configVer;
+@property NSString *userTag;
+@property NSString *facebookTag;
+@property NSString *twitterTag;
+@property NSString *googleTag;
+@property NSString *gameCenterTag;
+@property NSString *groupTag;
+@property NSString *serverVer;
+@property NSString *configVer;
 
-+ (id) sharedInstanceWithAPIKey:(NSString*) apiKey forOrg: (NSString*) Org;
-- (void) eventWithProperties:(NSDictionary*) properties;
-- (void) listEvents;
-- (void) clearEvents;
++ (DataCortex *)sharedInstance;
++ (DataCortex *)sharedInstanceWithAPIKey:(NSString *)apiKey forOrg:(NSString *)org;
+- (void)eventWithProperties:(NSDictionary *)properties;
+- (void)listEvents;
+- (void)clearEvents;
 
 @end

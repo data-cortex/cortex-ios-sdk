@@ -19,26 +19,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
-    DataCortex *dc = [DataCortex sharedInstanceWithAPIKey:@"dYlBxjMTYkXadqhnOyHnjo7iGb5bW1y0"
-                                                    forOrg:@"rs_example"];
-    
-    [dc setUserTag:@"ybolanos"];
-    
-    [dc eventWithProperties:@{
-                              @"kingdom": @"abcdefghigklmnopqrstuvxzyabcdefghigklmnopqrstuvxzy",
-                              @"phylum": @"phylum",
-                              @"class": @"class",
-                              @"order": @"order",
-                              @"family": @"family",
-                              @"genus": @"genus",
-                              @"species": @"species"
-                              }];
-    
-    [dc listEvents];
-    [dc clearEvents];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,5 +26,34 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)setUserTagAction:(id)sender
+{
+    [[DataCortex sharedInstance] setUserTag:@"ybolanos"];
+}
+
+- (IBAction)firstEventAction:(id)sender
+{
+    [[DataCortex sharedInstance] eventWithProperties:@{
+        @"kingdom": @"first event",
+    }];
+}
+- (IBAction)secondEventAction:(id)sender
+{
+    [[DataCortex sharedInstance] eventWithProperties:@{
+        @"kingdom": @"second event",
+        @"phylum": @"has",
+        @"class": @"a",
+        @"order": @"long",
+        @"family": @"taxonomy",
+        @"genus": @"in",
+        @"species": @"here"
+    }];
+}
+- (IBAction)economyEventAction:(id)sender
+{
+    NSLog(@"here");
+}
+
 
 @end
