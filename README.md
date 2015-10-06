@@ -20,7 +20,7 @@ cortex-ios-sdk is available through [CocoaPods](http://cocoapods.org). To instal
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "cortex-ios-sdk"
+pod "DataCortex"
 ```
 
 Make sure you include the following in your Info.plist
