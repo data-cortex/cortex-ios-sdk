@@ -23,6 +23,22 @@ it, simply add the following line to your Podfile:
 pod "cortex-ios-sdk"
 ```
 
+Make sure you include the following in your Info.plist
+
+```plist
+<key>NSAppTransportSecurity</key>
+<dict>
+  <key>NSExceptionDomains</key>
+  <dict>
+   <key>api.data-cortex.com</key>
+   <dict>
+    <key>NSTemporaryThirdPartyExceptionRequiresForwardSecrecy</key>
+    <false/>
+   </dict>
+  </dict>
+</dict>
+```
+
 
 # Initializing the library
 
