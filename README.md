@@ -46,12 +46,13 @@ Generally you initialize the library in your AppDelegate.m file.
 [application:willFinishLaunchingWithOptions:](http://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/Reference/Reference.html#//apple_ref/occ/intfm/UIApplicationDelegate/application:willFinishLaunchingWithOptions:)
 
 ```
-#import <DataCortex.h>
+#import <DataCortex/DataCortex.h>
 
 #define DC_API_KEY @"YOUR_API_KEY"
+#define DC_ORG @"your_org_name"
 
 // Initialize the library with your DC_API_KEY
-[DataCortex sharedInstanceWithAPIKey:YOUR_API_KEY];
+[DataCortex sharedInstanceWithAPIKey:YOUR_API_KEY forOrg:DC_ORG];
 
 // To get your instance later
 DataCortex *dc = [DataCortex sharedInstance];
