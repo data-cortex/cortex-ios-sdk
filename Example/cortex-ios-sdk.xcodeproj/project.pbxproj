@@ -43,7 +43,6 @@
 		92A8ACEE3C93889A0303F2B8 /* Pods_cortex_ios_sdk_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cortex_ios_sdk_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8AB4FEFB899C71054B73EA /* Pods-cortex-ios-sdk_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cortex-ios-sdk_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cortex-ios-sdk_Tests/Pods-cortex-ios-sdk_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E2A03D73E37530FFF618C00A /* Pods-cortex-ios-sdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cortex-ios-sdk_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cortex-ios-sdk_Tests/Pods-cortex-ios-sdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		FC7A8119113428B500BDD908 /* cortex-ios-sdk.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "cortex-ios-sdk.podspec"; path = "../cortex-ios-sdk.podspec"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +132,6 @@
 		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				FC7A8119113428B500BDD908 /* cortex-ios-sdk.podspec */,
 				280F7C6647D30DDF0B059FA2 /* README.md */,
 				786BEB3A92A46B82C26A7FDF /* LICENSE */,
 			);
@@ -170,7 +168,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DataCortex;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Yanko Bolanos";
 			};
 			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "cortex-ios-sdk" */;
@@ -295,6 +293,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;

@@ -52,7 +52,15 @@
 }
 - (IBAction)economyEventAction:(id)sender
 {
-    NSLog(@"here");
+    [[DataCortex sharedInstance] economyWithProperties:@{
+        @"kingdom": @"second event",
+        @"phylum": @"has",
+        @"class": @"a",
+        @"order": @"long",
+        @"family": @"taxonomy",
+        @"genus": @"in",
+        @"species": @"here"
+    }];
 }
 
 
