@@ -22,6 +22,7 @@ static int const BATCH_COUNT = 10;
 
 static NSString * const EVENTS_LIST_KEY = @"data_cortex_events_list";
 static NSString * const DEVICE_TAG_KEY = @"data_cortex_deviceTag";
+static NSString * const USER_TAG_PREFIX_KEY = @"data_cortex_userTag";
 
 @implementation DataCortex {
     NSLock *runningLock;
@@ -38,6 +39,7 @@ static NSString * const DEVICE_TAG_KEY = @"data_cortex_deviceTag";
     NSString *country;
     NSMutableArray *eventList;
     NSDateFormatter *dateFormatter;
+    NSDictionary *userTags;
 }
 
 @synthesize userTag = _userTag;
@@ -50,6 +52,18 @@ static NSString * const DEVICE_TAG_KEY = @"data_cortex_deviceTag";
 @synthesize configVer = _configVer;
 
 static DataCortex *g_sharedDataCortex = nil;
+
+- (void)errorWithFormat:(NSString *)format, ... {
+    va_list args;
+    va_start(args, format);
+    NSString *s = [[NSString alloc] initWithFormat:format arguments:args];
+    [self error:s];
+    va_end(args);
+}
+- (void)error:(NSString *)s {
+    NSLog(@"DC Error: %@",s);
+}
+
 
 + (DataCortex *)sharedInstanceWithAPIKey:(NSString *)apiKey forOrg:(NSString *)org
 {
@@ -64,12 +78,22 @@ static DataCortex *g_sharedDataCortex = nil;
     return g_sharedDataCortex;
 }
 
+- (NSString *)getSavedUserTagWithName:(NSString *)name {
+    NSString *key = [NSString stringWithFormat:@"%@_%@",USER_TAG_PREFIX_KEY,name];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:key];
+}
 
 - (DataCortex *)initWithAPIKey:(NSString *)initApiKey forOrg:(NSString *)initOrg {
     if (self = [super init]) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        self->deviceTag = [defaults objectForKey:DEVICE_TAG_KEY];
 
+        self->_userTag = [self getSavedUserTagWithName:@"userTag"];
+        self->_facebookTag = [self getSavedUserTagWithName:@"facebookTag"];
+        self->_twitterTag = [self getSavedUserTagWithName:@"twitterTag"];
+        self->_googleTag = [self getSavedUserTagWithName:@"googleTag"];
+        self->_gameCenterTag = [self getSavedUserTagWithName:@"gameCenterTag"];
+
+        self->deviceTag = [defaults objectForKey:DEVICE_TAG_KEY];
         if (!self->deviceTag) {
             ASIdentifierManager *asiManager = [ASIdentifierManager sharedManager];
             self->deviceTag = [[[asiManager advertisingIdentifier] UUIDString] copy];
@@ -126,32 +150,6 @@ static DataCortex *g_sharedDataCortex = nil;
     [self->eventLock unlock];
 }
 
-
-- (void)eventWithProperties:(NSDictionary *)properties forType:(NSString *)type {
-    NSMutableDictionary *event = [[NSMutableDictionary alloc] init];
-
-    for (NSString *key in properties) {
-        NSString *value = [properties objectForKey:key];
-        if ([value length] > TAXONOMY_MAX_LENGTH) {
-            [value substringToIndex:TAXONOMY_MAX_LENGTH-1];
-        } else {
-            value = [value copy];
-        }
-        [event setValue:value forKey:key];
-    }
-
-    [event setObject:[self getISO8601Date] forKey:@"event_datetime"];
-    [event setObject:type forKey:@"type"];
-
-    [self addEvent:event];
-}
-- (void)eventWithProperties:(NSDictionary *)properties {
-    [self eventWithProperties:properties forType:@"event"];
-}
-- (void)economyWithProperties:(NSDictionary *)properties {
-    [self eventWithProperties:properties forType:@"economy"];
-}
-
 - (NSString *)getISO8601Date {
     return [self->dateFormatter stringFromDate:[NSDate date]];
 }
@@ -161,7 +159,6 @@ static DataCortex *g_sharedDataCortex = nil;
     BOOL acquired = [self->runningLock tryLock];
     if (acquired) {
 
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         __block NSArray *sendList = [self getSendEvents];
 
         if ([sendList count] > 0) {
@@ -183,28 +180,24 @@ static DataCortex *g_sharedDataCortex = nil;
 
 
 - (void)addEvent:(NSObject *)event {
-    [self->eventLock lock];
-
-    [self->eventList addObject:event];
-
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self->eventList forKey:EVENTS_LIST_KEY];
-    [defaults synchronize];
 
+    [self->eventLock lock];
+    [self->eventList addObject:event];
+    [defaults setObject:[self->eventList copy] forKey:EVENTS_LIST_KEY];
     [self->eventLock unlock];
 
+    [defaults synchronize];
     [self sendEvents];
 }
 - (void)removeEvents:(NSArray *)processedEvents {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     [self->eventLock lock];
-
     for (NSObject *event in processedEvents) {
         [self->eventList removeObject:event];
     }
-
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self->eventList forKey:EVENTS_LIST_KEY];
+    [defaults setObject:[self->eventList copy] forKey:EVENTS_LIST_KEY];
     [defaults synchronize];
 
     [self->eventLock unlock];
@@ -339,28 +332,28 @@ static DataCortex *g_sharedDataCortex = nil;
 }
 
 - (NSString *)userTag {
-    return _userTag;
+    return self->_userTag;
 }
 - (NSString *)facebookTag {
-    return _facebookTag;
+    return self->_facebookTag;
 }
 - (NSString *)twitterTag {
-    return _twitterTag;
+    return self->_twitterTag;
 }
 - (NSString *)googleTag {
-    return _googleTag;
+    return self->_googleTag;
 }
 - (NSString *)gameCenterTag {
-    return _gameCenterTag;
+    return self->_gameCenterTag;
 }
 - (NSString *)groupTag {
-    return _groupTag;
+    return self->_groupTag;
 }
 - (NSString *)serverVer {
-    return _serverVer;
+    return self->_serverVer;
 }
 - (NSString *)configVer {
-    return _configVer;
+    return self->_configVer;
 }
 
 - (NSString *)_valueCopy:(NSString *)newValue maxLength:(int)maxLength {
@@ -373,35 +366,314 @@ static DataCortex *g_sharedDataCortex = nil;
     return ret;
 }
 
-- (NSString *)_tagCopy:(NSString *)newValue {
-    return [self _valueCopy:newValue maxLength:TAG_MAX_LENGTH];
+- (NSString *)_tagSave:(NSString *)newValue forTagName:(NSString *)tagName {
+    NSString *value = [self _valueCopy:newValue maxLength:TAG_MAX_LENGTH];
+    NSString *key = [NSString stringWithFormat:@"%@_%@",USER_TAG_PREFIX_KEY,tagName];
+    [[NSUserDefaults standardUserDefaults] setValue:value forKey:key];
+    return value;
 }
 
 - (void)setUserTag:(NSString *)newValue {
-    _userTag = [self _tagCopy:newValue];
+    self->_userTag = [self _tagSave:newValue forTagName:@"userTag"];
 }
 - (void)setFacebookTag:(NSString *)newValue {
-    _facebookTag = [self _tagCopy:newValue];
+    self->_facebookTag = [self _tagSave:newValue forTagName:@"facebookTag"];
 }
 - (void)setTwitterTag:(NSString *)newValue {
-    _twitterTag = [self _tagCopy:newValue];
+    self->_twitterTag = [self _tagSave:newValue forTagName:@"twitterTag"];
 }
 - (void)setGoogleTag:(NSString *)newValue {
-    _googleTag = [self _tagCopy:newValue];
+    self->_googleTag = [self _tagSave:newValue forTagName:@"googleTag"];
 }
 - (void)setGameCenterTag:(NSString *)newValue {
-    _gameCenterTag = [self _tagCopy:newValue];
+    self->_gameCenterTag = [self _tagSave:newValue  forTagName:@"gameCenterTag"];
 }
 
 - (void)setGroupTag:(NSString *)newValue {
-    _groupTag = [self _valueCopy:newValue maxLength:GROUP_TAG_MAX_LENGTH];
+   self-> _groupTag = [self _valueCopy:newValue maxLength:GROUP_TAG_MAX_LENGTH];
 }
 
 - (void)setServerVer:(NSString * )newValue {
-    _serverVer = [self _valueCopy:newValue maxLength:SERVER_VER_MAX_LENGTH];
+    self->_serverVer = [self _valueCopy:newValue maxLength:SERVER_VER_MAX_LENGTH];
 }
 - (void)setConfigVer:(NSString *)newValue {
-    _configVer = [self _valueCopy:newValue maxLength:CONFIG_VER_MAX_LENGTH];
+    self->_configVer = [self _valueCopy:newValue maxLength:CONFIG_VER_MAX_LENGTH];
 }
+
+- (id)properties:(NSDictionary *)properties key:(NSString *)key maxLength:(int)maxLength {
+    NSString *ret = nil;
+    NSString *value = [[properties objectForKey:key] description];
+    NSUInteger length = [value length];
+    if (length > 0) {
+        if (length > TAXONOMY_MAX_LENGTH) {
+            ret = [value substringToIndex:TAXONOMY_MAX_LENGTH-1];
+        } else {
+            ret = [value copy];
+        }
+    }
+    return ret;
+}
+
+- (void)eventWithProperties:(NSDictionary *)properties forType:(NSString *)type {
+    BOOL isGood = true;
+
+    const NSArray *TAXONOMY_PROPERTY_LIST = @[
+        @"kingdom",
+        @"phylum",
+        @"class",
+        @"order",
+        @"family",
+        @"genus",
+        @"species",
+    ];
+    const NSArray *NUMBER_PROPERTY_LIST = @[
+        @"float1",
+        @"float2",
+        @"float3",
+        @"float4",
+    ];
+
+    NSMutableDictionary *event = [[NSMutableDictionary alloc] init];
+
+    [event setObject:[self getISO8601Date] forKey:@"event_datetime"];
+    [event setObject:type forKey:@"type"];
+
+    for (NSString *key in TAXONOMY_PROPERTY_LIST) {
+        NSString *value = [self properties:properties key:key maxLength:TAXONOMY_MAX_LENGTH];
+        if (value) {
+            [event setValue:value forKey:key];
+        }
+    }
+
+    for (NSString *key in NUMBER_PROPERTY_LIST) {
+        id value = [properties objectForKey:key];
+        if ([value isKindOfClass:[NSNumber class]]) {
+            [event setValue:value forKey:key];
+        } else if (value) {
+            [self errorWithFormat:@"bad value (%@) for %@",value,key];
+        }
+    }
+
+    if ([type isEqual:@"economy"]) {
+        NSString *spendType = [self properties:properties key:@"spendType" maxLength:TAXONOMY_MAX_LENGTH];
+        if (spendType)
+        {
+            [event setObject:spendType forKey:@"spend_type"];
+        }
+
+        NSString *spendCurrency = [self properties:properties key:@"spendCurrency" maxLength:TAXONOMY_MAX_LENGTH];
+        if (spendCurrency)
+        {
+            [event setObject:spendCurrency forKey:@"spend_currency"];
+        }
+        else
+        {
+            [self error:@"missing required value spendCurrency for economy event"];
+            isGood = false;
+        }
+
+        NSString *spendAmount = [properties objectForKey:@"spendAmount"];
+        if ([spendAmount isKindOfClass:[NSNumber class]]) {
+            [event setValue:spendAmount forKey:@"spend_amount"];
+        } else if (spendAmount == nil) {
+            [self error:@"missing required value spendAmount for economy event"];
+            isGood = false;
+        } else {
+            [self errorWithFormat:@"bad value (%@) for spendAmount",spendAmount];
+            isGood = false;
+        }
+    }
+
+
+    if (isGood) {
+        [self addEvent:event];
+    } else {
+        [self errorWithFormat:@"failed to send event with type: %@ and properties: %@",type,properties];
+    }
+}
+- (void)eventWithProperties:(NSDictionary *)properties {
+    [self eventWithProperties:properties forType:@"event"];
+}
+- (void)economyWithProperties:(NSDictionary *)properties {
+    [self eventWithProperties:properties forType:@"economy"];
+}
+
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus
+    species:(NSString *)species
+    float1:(NSNumber *)float1
+    float2:(NSNumber *)float2
+    float3:(NSNumber *)float3
+    float4:(NSNumber *)float4 {
+
+    [self eventWithProperties:@{
+        @"kingdom": kingdom,
+        @"phylum": phylum,
+        @"class": class,
+        @"order": order,
+        @"family": family,
+        @"genus": genus,
+        @"species": species,
+        @"float1": float1,
+        @"float2": float2,
+        @"float3": float3,
+        @"float4": float4,
+    }];
+}
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus
+    species:(NSString *)species
+    float1:(NSNumber *)float1
+    float2:(NSNumber *)float2
+    float3:(NSNumber *)float3 {
+
+    [self eventWithProperties:@{
+        @"kingdom": kingdom,
+        @"phylum": phylum,
+        @"class": class,
+        @"order": order,
+        @"family": family,
+        @"genus": genus,
+        @"species": species,
+        @"float1": float1,
+        @"float2": float2,
+        @"float3": float3,
+    }];
+}
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus
+    species:(NSString *)species
+    float1:(NSNumber *)float1
+    float2:(NSNumber *)float2 {
+
+    [self eventWithProperties:@{
+        @"kingdom": kingdom,
+        @"phylum": phylum,
+        @"class": class,
+        @"order": order,
+        @"family": family,
+        @"genus": genus,
+        @"species": species,
+        @"float1": float1,
+        @"float2": float2,
+    }];
+}
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus
+    species:(NSString *)species
+    float1:(NSNumber *)float1 {
+
+    [self eventWithProperties:@{
+        @"kingdom": kingdom,
+        @"phylum": phylum,
+        @"class": class,
+        @"order": order,
+        @"family": family,
+        @"genus": genus,
+        @"species": species,
+        @"float1": float1,
+    }];
+}
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus
+    species:(NSString *)species {
+
+    [self eventWithProperties:@{
+        @"kingdom": kingdom,
+        @"phylum": phylum,
+        @"class": class,
+        @"order": order,
+        @"family": family,
+        @"genus": genus,
+        @"species": species,
+    }];
+}
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus {
+
+    [self eventWithProperties:@{
+        @"kingdom": kingdom,
+        @"phylum": phylum,
+        @"class": class,
+        @"order": order,
+        @"family": family,
+        @"genus": genus,
+    }];
+}
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family {
+
+    [self eventWithProperties:@{
+        @"kingdom": kingdom,
+        @"phylum": phylum,
+        @"class": class,
+        @"order": order,
+        @"family": family,
+    }];
+}
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order {
+
+    [self eventWithProperties:@{
+        @"kingdom": kingdom,
+        @"phylum": phylum,
+        @"class": class,
+        @"order": order,
+    }];
+}
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class {
+
+    [self eventWithProperties:@{
+        @"kingdom": kingdom,
+        @"phylum": phylum,
+        @"class": class,
+    }];
+}
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum {
+
+    [self eventWithProperties:@{
+        @"kingdom": kingdom,
+        @"phylum": phylum,
+    }];
+}
+- (void)eventWithKingdom:(NSString *)kingdom {
+    [self eventWithProperties:@{
+        @"kingdom": kingdom,
+    }];
+}
+
+
 
 @end

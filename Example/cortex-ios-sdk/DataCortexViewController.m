@@ -40,15 +40,17 @@
 }
 - (IBAction)secondEventAction:(id)sender
 {
-    [[DataCortex sharedInstance] eventWithProperties:@{
-        @"kingdom": @"second event",
-        @"phylum": @"has",
-        @"class": @"a",
-        @"order": @"long",
-        @"family": @"taxonomy",
-        @"genus": @"in",
-        @"species": @"here"
-    }];
+    [[DataCortex sharedInstance] eventWithKingdom:@"kingdom"
+        phylum:@"phylum"
+        class:@"class"
+        order:@"order"
+        family:@"family"
+        genus:@"genus"
+        species:@"species"
+        float1:@1
+        float2:@2
+        float3:@3
+        float4:@4];
 }
 - (IBAction)economyEventAction:(id)sender
 {
@@ -59,7 +61,7 @@
         @"order": @"long",
         @"family": @"taxonomy",
         @"genus": @"in",
-        @"species": @"here"
+        @"species": @"here",
     }];
 }
 

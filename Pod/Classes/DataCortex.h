@@ -24,5 +24,84 @@
 + (DataCortex *)sharedInstance;
 + (DataCortex *)sharedInstanceWithAPIKey:(NSString *)apiKey forOrg:(NSString *)org;
 - (void)eventWithProperties:(NSDictionary *)properties;
+- (void)economyWithProperties:(NSDictionary *)properties;
+
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus
+    species:(NSString *)species
+    float1:(NSNumber *)float1
+    float2:(NSNumber *)float2
+    float3:(NSNumber *)float3
+    float4:(NSNumber *)float4;
+
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus
+    species:(NSString *)species
+    float1:(NSNumber *)float1
+    float2:(NSNumber *)float2
+    float3:(NSNumber *)float3;
+
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus
+    species:(NSString *)species
+    float1:(NSNumber *)float1
+    float2:(NSNumber *)float2;
+
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus
+    species:(NSString *)species
+    float1:(NSNumber *)float1;
+
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus
+    species:(NSString *)species;
+
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family
+    genus:(NSString *)genus;
+
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order
+    family:(NSString *)family;
+
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class
+    order:(NSString *)order;
+
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum
+    class:(NSString *)class;
+
+- (void)eventWithKingdom:(NSString *)kingdom
+    phylum:(NSString *)phylum;
+
+- (void)eventWithKingdom:(NSString *)kingdom;
+
 
 @end

@@ -1,13 +1,6 @@
 # cortex-ios-sdk
 Data Cortex iOS SDK
 
-# cortex-ios-sdk
-
-[![CI Status](http://img.shields.io/travis/Yanko Bolanos/cortex-ios-sdk.svg?style=flat)](https://travis-ci.org/Yanko Bolanos/cortex-ios-sdk)
-[![Version](https://img.shields.io/cocoapods/v/cortex-ios-sdk.svg?style=flat)](http://cocoapods.org/pods/cortex-ios-sdk)
-[![License](https://img.shields.io/cocoapods/l/cortex-ios-sdk.svg?style=flat)](http://cocoapods.org/pods/cortex-ios-sdk)
-[![Platform](https://img.shields.io/cocoapods/p/cortex-ios-sdk.svg?style=flat)](http://cocoapods.org/pods/cortex-ios-sdk)
-
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -39,13 +32,12 @@ Make sure you include the following in your Info.plist
 </dict>
 ```
 
-
 # Initializing the library
 
 Generally you initialize the library in your AppDelegate.m file.
 [application:willFinishLaunchingWithOptions:](http://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/Reference/Reference.html#//apple_ref/occ/intfm/UIApplicationDelegate/application:willFinishLaunchingWithOptions:)
 
-```
+```objective-c
 #import <DataCortex/DataCortex.h>
 
 #define DC_API_KEY @"YOUR_API_KEY"
@@ -63,7 +55,7 @@ DataCortex *dc = [DataCortex sharedInstance];
 If you have a user ID or other identifier you track users by, add this to
 Data Cortex to aggregate the user's usage across multiple devices and platforms.
 
-```
+```objective-c
 DataCortex *dc = [DataCortex sharedInstance];
 
 // User identified by Numeric ID
@@ -79,7 +71,7 @@ refer to your tracking specification for the parameters to use in each event.
 
 ## Using named selector arguments
 
-```
+```objective-c
 DataCortex *dc = [DataCortex sharedInstance];
 
 // With all taxonomy
@@ -116,7 +108,7 @@ DataCortex *dc = [DataCortex sharedInstance];
 ## Using a dictonary
 You can also track events using a dictonary of properties.
 
-```
+```objective-c
 DataCortex *dc = [DataCortex sharedInstance];
 
 // With all taxonomy
@@ -152,7 +144,7 @@ Economy tracking is very similar to event tracking but adds a few extra
 required elements.  Specifically `spendAmount` and `spendCurrency`.  It also
 adds an optional `spendType`.
 
-```
+```objective-c
 DataCortex *dc = [DataCortex sharedInstance];
 
 // With all taxonomy
@@ -183,10 +175,3 @@ DataCortex *dc = [DataCortex sharedInstance];
 }];
 
 ```
-
-
-
-
-
-
-## License
