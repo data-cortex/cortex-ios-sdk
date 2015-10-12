@@ -2,11 +2,5 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'cortex-ios-sdk_Example', :exclusive => true do
-  pod "cortex-ios-sdk", :path => "../"
-end
-
-target 'cortex-ios-sdk_Tests', :exclusive => true do
-  pod "cortex-ios-sdk", :path => "../"
-
-  
+  pod "DataCortex", :path => "../"
 end

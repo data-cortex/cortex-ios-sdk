@@ -8,7 +8,7 @@
 
 #import "DataCortexViewController.h"
 
-#import "DataCortex.h"
+#import <DataCortex/DataCortex.h>
 
 @interface DataCortexViewController ()
 
@@ -40,19 +40,38 @@
 }
 - (IBAction)secondEventAction:(id)sender
 {
-    [[DataCortex sharedInstance] eventWithProperties:@{
-        @"kingdom": @"second event",
-        @"phylum": @"has",
-        @"class": @"a",
-        @"order": @"long",
-        @"family": @"taxonomy",
-        @"genus": @"in",
-        @"species": @"here"
+    DataCortex *dc = [DataCortex sharedInstance];
+    [dc eventWithProperties:@{
+        @"kingdom": @"kingdom",
+        @"phylum": @"phylum",
+        @"class": @"class",
+        @"order": @"order",
+        @"family": @"family",
+        @"genus": @"genus",
+        @"species": @"species",
+        @"float1": @1,
+        @"float2": @2,
+        @"float3": @3,
+        @"float4": @4,
+    }];
+
+    [dc eventWithProperties:@{
+        @"kingdom": @"build",
+        @"phylum": @"chicken_coop",
+        @"class": @"large",
+        @"order": @"red"
     }];
 }
 - (IBAction)economyEventAction:(id)sender
 {
-    NSLog(@"here");
+    [[DataCortex sharedInstance] economyWithProperties:@{
+        @"kingdom": @"building",
+        @"phylum": @"barn",
+        @"class": @"blue",
+    }
+    spendCurrency: @"USD"
+    spendAmount: @10.0
+    ];
 }
 
 
