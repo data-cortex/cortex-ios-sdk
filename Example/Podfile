@@ -4,9 +4,3 @@ use_frameworks!
 target 'cortex-ios-sdk_Example', :exclusive => true do
   pod "DataCortex", :path => "../"
 end
-
-target 'cortex-ios-sdk_Tests', :exclusive => true do
-  pod "DataCortex", :path => "../"
-
-
-end

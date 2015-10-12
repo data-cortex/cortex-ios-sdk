@@ -69,45 +69,6 @@ DataCortex *dc = [DataCortex sharedInstance];
 Event tracking is the bulk of the ways you'll use the Data Cortex SDK.  Please
 refer to your tracking specification for the parameters to use in each event.
 
-## Using named selector arguments
-
-```objective-c
-DataCortex *dc = [DataCortex sharedInstance];
-
-// With all taxonomy
-[dc eventWithKingdom:@"kingdom"
-  phylum:@"phylum"
-  class:@"class"
-  order:@"order"
-  family:@"family"
-  genus:@"genus",
-  species:@"species"
-];
-
-// With partial taxonomy
-[dc eventWithKingdom:@"signup" phylum:@"phylum" class:@"class"];
-
-// With partial taxonomy and floats
-[dc eventWithKingdom:@"kingdom"
-  phylum:@"phylum"
-  class:@"class"
-  order:@"order"
-  family:@"family"
-  genus:@"genus"
-  species:@"species"
-  float1:1.5
-  float2:2.0
-  float3:3.0
-  float4:4.0
-];
-
-// With partial taxonomy and NSNumbers as floats
-[dc eventWithKingdom:@"signup" float1:@20000];
-```
-
-## Using a dictonary
-You can also track events using a dictonary of properties.
-
 ```objective-c
 DataCortex *dc = [DataCortex sharedInstance];
 
@@ -145,33 +106,28 @@ required elements.  Specifically `spendAmount` and `spendCurrency`.  It also
 adds an optional `spendType`.
 
 ```objective-c
-DataCortex *dc = [DataCortex sharedInstance];
 
-// With all taxonomy
-[dc economyWithKingdom:@"kingdom"
-  phylum:@"phylum"
-  class:@"class"
-  order:@"order"
-  family:@"family"
-  genus:@"genus",
-  species:@"species"
-  spendAmount:@5.0
-  spendCurrency:@"coins"
-  spendType:@"upgrade"
-];
-
-// With all taxonomy
 [dc economyWithProperties:@{
-  @"kingdom": @"kingdom",
-  @"phylum": @"phylum",
-  @"class": @"class",
-  @"order": @"order",
-  @"family": @"family",
-  @"genus": @"genus",
-  @"species": @"species",
-  @"spendAmount": @9.99,
-  @"spendCurrency": @"USD",
-  @"spendType": @"coinPurchase",
+    @"kingdom": @"kingdom",
+    @"phylum": @"phylum",
+    @"class": @"class",
+    @"order": @"order",
+    @"family": @"family",
+    @"genus": @"genus",
+    @"species": @"species",
+  },
+  spendAmount: @9.99,
+  spendCurrency: @"USD",
+  spendType: @"coinPurchase",
+}];
+
+[dc economyWithProperties:@{
+    @"kingdom": @"buildings",
+    @"phylum": @"barn",
+    @"class": @"red",
+  },
+  spendAmount: @10,
+  spendCurrency: @"coins",
 }];
 
 ```

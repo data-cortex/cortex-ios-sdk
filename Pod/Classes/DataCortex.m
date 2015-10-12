@@ -20,9 +20,10 @@ static int const TAXONOMY_MAX_LENGTH = 32;
 static int const BATCH_COUNT = 10;
 
 
-static NSString * const EVENTS_LIST_KEY = @"data_cortex_events_list";
+static NSString * const EVENT_LIST_KEY = @"data_cortex_eventList";
 static NSString * const DEVICE_TAG_KEY = @"data_cortex_deviceTag";
 static NSString * const USER_TAG_PREFIX_KEY = @"data_cortex_userTag";
+static NSString * const INSTALL_SENT_KEY = @"data_cortex_installSent";
 
 @implementation DataCortex {
     NSLock *runningLock;
@@ -65,16 +66,17 @@ static DataCortex *g_sharedDataCortex = nil;
 }
 
 
-+ (DataCortex *)sharedInstanceWithAPIKey:(NSString *)apiKey forOrg:(NSString *)org
-{
++ (DataCortex *)sharedInstanceWithAPIKey:(NSString *)apiKey forOrg:(NSString *)org {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         g_sharedDataCortex = [[self alloc] initWithAPIKey:apiKey forOrg:org];
     });
     return g_sharedDataCortex;
 }
-+ (DataCortex *)sharedInstance
-{
++ (DataCortex *)sharedInstance {
+    if (!g_sharedDataCortex) {
+         NSLog(@"DC Error: Dont call sharedInstance before sharedInstanceWithAPIKey:forOrg:");
+    }
     return g_sharedDataCortex;
 }
 
@@ -126,6 +128,13 @@ static DataCortex *g_sharedDataCortex = nil;
         self->runningLock = [[NSLock alloc] init];
 
         [self initializeEventList];
+
+        if (![defaults boolForKey:INSTALL_SENT_KEY]) {
+            [self eventWithProperties:@{ @"kingdom": @"organic" } forType:@"install"];
+            [defaults setBool:TRUE forKey:INSTALL_SENT_KEY];
+            [defaults synchronize];
+        }
+
         [self sendEvents];
     }
 
@@ -139,11 +148,11 @@ static DataCortex *g_sharedDataCortex = nil;
 - (void)initializeEventList {
     [self->eventLock lock];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self->eventList = [[defaults arrayForKey:EVENTS_LIST_KEY] mutableCopy];
+    self->eventList = [[defaults arrayForKey:EVENT_LIST_KEY] mutableCopy];
 
     if (!self->eventList) {
         self->eventList = [[NSMutableArray alloc] init];
-        [defaults setObject:self->eventList forKey:EVENTS_LIST_KEY];
+        [defaults setObject:self->eventList forKey:EVENT_LIST_KEY];
         [defaults synchronize];
     }
 
@@ -184,7 +193,7 @@ static DataCortex *g_sharedDataCortex = nil;
 
     [self->eventLock lock];
     [self->eventList addObject:event];
-    [defaults setObject:[self->eventList copy] forKey:EVENTS_LIST_KEY];
+    [defaults setObject:[self->eventList copy] forKey:EVENT_LIST_KEY];
     [self->eventLock unlock];
 
     [defaults synchronize];
@@ -197,7 +206,7 @@ static DataCortex *g_sharedDataCortex = nil;
     for (NSObject *event in processedEvents) {
         [self->eventList removeObject:event];
     }
-    [defaults setObject:[self->eventList copy] forKey:EVENTS_LIST_KEY];
+    [defaults setObject:[self->eventList copy] forKey:EVENT_LIST_KEY];
     [defaults synchronize];
 
     [self->eventLock unlock];
@@ -400,21 +409,32 @@ static DataCortex *g_sharedDataCortex = nil;
     self->_configVer = [self _valueCopy:newValue maxLength:CONFIG_VER_MAX_LENGTH];
 }
 
+- (id)trimString:(NSString *)s maxLength:(int)maxLength {
+    NSString *ret = nil;
+    NSUInteger length = [s length];
+    if (length > maxLength) {
+        ret = [s substringToIndex:maxLength-1];
+    } else {
+        ret = [s copy];
+    }
+    return ret;
+}
+
 - (id)properties:(NSDictionary *)properties key:(NSString *)key maxLength:(int)maxLength {
     NSString *ret = nil;
     NSString *value = [[properties objectForKey:key] description];
     NSUInteger length = [value length];
     if (length > 0) {
-        if (length > TAXONOMY_MAX_LENGTH) {
-            ret = [value substringToIndex:TAXONOMY_MAX_LENGTH-1];
-        } else {
-            ret = [value copy];
-        }
+        ret = [self trimString:value maxLength:maxLength];
     }
     return ret;
 }
 
-- (void)eventWithProperties:(NSDictionary *)properties forType:(NSString *)type {
+- (void)eventWithProperties:(NSDictionary *)properties forType:(NSString *)type
+    spendCurrency:(NSString *)spendCurrency
+    spendType:(NSString *)spendType
+    spendAmount:(NSNumber *)spendAmount
+    {
     BOOL isGood = true;
 
     const NSArray *TAXONOMY_PROPERTY_LIST = @[
@@ -455,24 +475,13 @@ static DataCortex *g_sharedDataCortex = nil;
     }
 
     if ([type isEqual:@"economy"]) {
-        NSString *spendType = [self properties:properties key:@"spendType" maxLength:TAXONOMY_MAX_LENGTH];
-        if (spendType)
-        {
-            [event setObject:spendType forKey:@"spend_type"];
-        }
-
-        NSString *spendCurrency = [self properties:properties key:@"spendCurrency" maxLength:TAXONOMY_MAX_LENGTH];
-        if (spendCurrency)
-        {
-            [event setObject:spendCurrency forKey:@"spend_currency"];
-        }
-        else
-        {
-            [self error:@"missing required value spendCurrency for economy event"];
+        if( spendCurrency ) {
+            spendCurrency = [self trimString:spendCurrency maxLength:TAXONOMY_MAX_LENGTH];
+            [event setValue:spendCurrency forKey:@"spend_currency"];
+        } else {
+            [self error:@"spendCurrency is required"];
             isGood = false;
         }
-
-        NSString *spendAmount = [properties objectForKey:@"spendAmount"];
         if ([spendAmount isKindOfClass:[NSNumber class]]) {
             [event setValue:spendAmount forKey:@"spend_amount"];
         } else if (spendAmount == nil) {
@@ -482,198 +491,60 @@ static DataCortex *g_sharedDataCortex = nil;
             [self errorWithFormat:@"bad value (%@) for spendAmount",spendAmount];
             isGood = false;
         }
+
+        if( spendType ) {
+            spendType = [self trimString:spendType maxLength:TAXONOMY_MAX_LENGTH];
+            [event setValue:spendType forKey:@"spend_type"];
+        }
     }
 
 
     if (isGood) {
         [self addEvent:event];
+    } else if( [type isEqual:@"economy"] ) {
+        [self errorWithFormat:@"failed to send event with type: %@ and properties: %@, spendCurrency: %@, spendAmount: %@",
+            type,properties,spendCurrency,spendAmount];
     } else {
         [self errorWithFormat:@"failed to send event with type: %@ and properties: %@",type,properties];
     }
 }
+
+- (void)eventWithProperties:(NSDictionary *)properties forType:(NSString *)type {
+    [self eventWithProperties:properties
+        forType:type
+        spendCurrency:nil
+        spendType:nil
+        spendAmount:nil];
+}
+
+
 - (void)eventWithProperties:(NSDictionary *)properties {
-    [self eventWithProperties:properties forType:@"event"];
+    [self eventWithProperties:properties
+        forType:@"event"
+        spendCurrency:nil
+        spendType:nil
+        spendAmount:nil];
 }
-- (void)economyWithProperties:(NSDictionary *)properties {
-    [self eventWithProperties:properties forType:@"economy"];
-}
-
-- (void)eventWithKingdom:(NSString *)kingdom
-    phylum:(NSString *)phylum
-    class:(NSString *)class
-    order:(NSString *)order
-    family:(NSString *)family
-    genus:(NSString *)genus
-    species:(NSString *)species
-    float1:(NSNumber *)float1
-    float2:(NSNumber *)float2
-    float3:(NSNumber *)float3
-    float4:(NSNumber *)float4 {
-
-    [self eventWithProperties:@{
-        @"kingdom": kingdom,
-        @"phylum": phylum,
-        @"class": class,
-        @"order": order,
-        @"family": family,
-        @"genus": genus,
-        @"species": species,
-        @"float1": float1,
-        @"float2": float2,
-        @"float3": float3,
-        @"float4": float4,
-    }];
-}
-- (void)eventWithKingdom:(NSString *)kingdom
-    phylum:(NSString *)phylum
-    class:(NSString *)class
-    order:(NSString *)order
-    family:(NSString *)family
-    genus:(NSString *)genus
-    species:(NSString *)species
-    float1:(NSNumber *)float1
-    float2:(NSNumber *)float2
-    float3:(NSNumber *)float3 {
-
-    [self eventWithProperties:@{
-        @"kingdom": kingdom,
-        @"phylum": phylum,
-        @"class": class,
-        @"order": order,
-        @"family": family,
-        @"genus": genus,
-        @"species": species,
-        @"float1": float1,
-        @"float2": float2,
-        @"float3": float3,
-    }];
-}
-- (void)eventWithKingdom:(NSString *)kingdom
-    phylum:(NSString *)phylum
-    class:(NSString *)class
-    order:(NSString *)order
-    family:(NSString *)family
-    genus:(NSString *)genus
-    species:(NSString *)species
-    float1:(NSNumber *)float1
-    float2:(NSNumber *)float2 {
-
-    [self eventWithProperties:@{
-        @"kingdom": kingdom,
-        @"phylum": phylum,
-        @"class": class,
-        @"order": order,
-        @"family": family,
-        @"genus": genus,
-        @"species": species,
-        @"float1": float1,
-        @"float2": float2,
-    }];
-}
-- (void)eventWithKingdom:(NSString *)kingdom
-    phylum:(NSString *)phylum
-    class:(NSString *)class
-    order:(NSString *)order
-    family:(NSString *)family
-    genus:(NSString *)genus
-    species:(NSString *)species
-    float1:(NSNumber *)float1 {
-
-    [self eventWithProperties:@{
-        @"kingdom": kingdom,
-        @"phylum": phylum,
-        @"class": class,
-        @"order": order,
-        @"family": family,
-        @"genus": genus,
-        @"species": species,
-        @"float1": float1,
-    }];
-}
-- (void)eventWithKingdom:(NSString *)kingdom
-    phylum:(NSString *)phylum
-    class:(NSString *)class
-    order:(NSString *)order
-    family:(NSString *)family
-    genus:(NSString *)genus
-    species:(NSString *)species {
-
-    [self eventWithProperties:@{
-        @"kingdom": kingdom,
-        @"phylum": phylum,
-        @"class": class,
-        @"order": order,
-        @"family": family,
-        @"genus": genus,
-        @"species": species,
-    }];
-}
-- (void)eventWithKingdom:(NSString *)kingdom
-    phylum:(NSString *)phylum
-    class:(NSString *)class
-    order:(NSString *)order
-    family:(NSString *)family
-    genus:(NSString *)genus {
-
-    [self eventWithProperties:@{
-        @"kingdom": kingdom,
-        @"phylum": phylum,
-        @"class": class,
-        @"order": order,
-        @"family": family,
-        @"genus": genus,
-    }];
-}
-- (void)eventWithKingdom:(NSString *)kingdom
-    phylum:(NSString *)phylum
-    class:(NSString *)class
-    order:(NSString *)order
-    family:(NSString *)family {
-
-    [self eventWithProperties:@{
-        @"kingdom": kingdom,
-        @"phylum": phylum,
-        @"class": class,
-        @"order": order,
-        @"family": family,
-    }];
-}
-- (void)eventWithKingdom:(NSString *)kingdom
-    phylum:(NSString *)phylum
-    class:(NSString *)class
-    order:(NSString *)order {
-
-    [self eventWithProperties:@{
-        @"kingdom": kingdom,
-        @"phylum": phylum,
-        @"class": class,
-        @"order": order,
-    }];
-}
-- (void)eventWithKingdom:(NSString *)kingdom
-    phylum:(NSString *)phylum
-    class:(NSString *)class {
-
-    [self eventWithProperties:@{
-        @"kingdom": kingdom,
-        @"phylum": phylum,
-        @"class": class,
-    }];
-}
-- (void)eventWithKingdom:(NSString *)kingdom
-    phylum:(NSString *)phylum {
-
-    [self eventWithProperties:@{
-        @"kingdom": kingdom,
-        @"phylum": phylum,
-    }];
-}
-- (void)eventWithKingdom:(NSString *)kingdom {
-    [self eventWithProperties:@{
-        @"kingdom": kingdom,
-    }];
+- (void)economyWithProperties:(NSDictionary *)properties
+    spendCurrency:(NSString *)spendCurrency
+    spendAmount:(NSNumber *)spendAmount {
+    [self eventWithProperties:properties
+        forType:@"economy"
+        spendCurrency:spendCurrency
+        spendType:nil
+        spendAmount:spendAmount];
 }
 
+- (void)economyWithProperties:(NSDictionary *)properties
+    spendCurrency:(NSString *)spendCurrency
+    spendAmount:(NSNumber *)spendAmount
+    spendType:(NSString *)spendType {
 
+    [self eventWithProperties:properties
+        forType:@"economy"
+        spendCurrency:spendCurrency
+        spendType:spendType
+        spendAmount:spendAmount];
+}
 
 @end

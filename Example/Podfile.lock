@@ -1,5 +1,5 @@
 PODS:
-  - DataCortex (0.2.0)
+  - DataCortex (1.0.0)
 
 DEPENDENCIES:
   - DataCortex (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  DataCortex: ebd853fbb4c16eca668960a1d7a6900c3660f816
+  DataCortex: f8a48dddd284542b0aaac3d40793e678e4011101
 
 COCOAPODS: 0.38.2
