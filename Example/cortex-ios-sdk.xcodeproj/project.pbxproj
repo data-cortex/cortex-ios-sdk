@@ -15,13 +15,11 @@
 		6003F59E195388D20070C39A /* DataCortexAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* DataCortexAppDelegate.m */; };
 		6003F5A7195388D20070C39A /* DataCortexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* DataCortexViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
-		65FAF9F8B32C953C08BD078A /* Pods_cortex_ios_sdk_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A8ACEE3C93889A0303F2B8 /* Pods_cortex_ios_sdk_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		280F7C6647D30DDF0B059FA2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		5E2B1D00BD6719EB97145163 /* Pods_cortex_ios_sdk_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cortex_ios_sdk_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* cortex-ios-sdk_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cortex-ios-sdk_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -35,12 +33,10 @@
 		6003F5A5195388D20070C39A /* DataCortexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataCortexViewController.h; sourceTree = "<group>"; };
 		6003F5A6195388D20070C39A /* DataCortexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataCortexViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		64D1868D96DBD9B7A86723D1 /* Pods-cortex-ios-sdk_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cortex-ios-sdk_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-cortex-ios-sdk_Example/Pods-cortex-ios-sdk_Example.release.xcconfig"; sourceTree = "<group>"; };
 		786BEB3A92A46B82C26A7FDF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		7FF1F76078A50CCB04E7B082 /* Pods-cortex-ios-sdk_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cortex-ios-sdk_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cortex-ios-sdk_Example/Pods-cortex-ios-sdk_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		92A8ACEE3C93889A0303F2B8 /* Pods_cortex_ios_sdk_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cortex_ios_sdk_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8AB4FEFB899C71054B73EA /* Pods-cortex-ios-sdk_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cortex-ios-sdk_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cortex-ios-sdk_Tests/Pods-cortex-ios-sdk_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E2A03D73E37530FFF618C00A /* Pods-cortex-ios-sdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cortex-ios-sdk_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-cortex-ios-sdk_Tests/Pods-cortex-ios-sdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,7 +49,6 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				65FAF9F8B32C953C08BD078A /* Pods_cortex_ios_sdk_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,9 +91,6 @@
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
-				6003F5AF195388D20070C39A /* XCTest.framework */,
-				92A8ACEE3C93889A0303F2B8 /* Pods_cortex_ios_sdk_Example.framework */,
-				5E2B1D00BD6719EB97145163 /* Pods_cortex_ios_sdk_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
