@@ -9,7 +9,7 @@
 #import "DataCortex.h"
 @import AdSupport;
 
-static int const DELAY_RETRY_INTERVAL = 30;
+static int const DELAY_RETRY_INTERVAL = 30.0;
 static int const HTTP_TIMEOUT = 60.0;
 static NSString * const API_BASE_URL = @"https://api.data-cortex.com";
 static int const TAG_MAX_LENGTH = 62;
@@ -172,13 +172,26 @@ static DataCortex *g_sharedDataCortex = nil;
 
         if ([sendList count] > 0) {
             [self postEvents:sendList completionHandler:^(NSInteger httpStatus) {
+                BOOL sendDelayed = TRUE;
                 if (httpStatus >= 200 && httpStatus <= 299) {
                     [self removeEvents:sendList];
-                    [self->runningLock unlock];
-                    [self sendEvents];
+                } else if (httpStatus == 400) {
+                    [self removeEvents:sendList];
+                } else if (httpStatus == 403) {
+                    [self error:@"Bad authentication, please check your API Key"];
+                    [self removeEvents:sendList];
+                } else if (httpStatus == 409) {
+                    [self error:@"Conflict, dup send?"];
+                    [self removeEvents:sendList];
                 } else {
-                    [self->runningLock unlock];
+                    // Unknown error, lets just wait and try again.
+                    sendDelayed = true;
+                }
+                [self->runningLock unlock];
+                if (sendDelayed) {
                     [self performSelector:@selector(sendEvents) withObject:nil afterDelay:DELAY_RETRY_INTERVAL];
+                } else {
+                    [self sendEvents];
                 }
             }];
         } else {
@@ -272,7 +285,6 @@ static DataCortex *g_sharedDataCortex = nil;
 }
 
 - (void)postEvents:(NSArray *)events completionHandler:(void (^) (NSInteger))completionHandler {
-
     NSOperationQueue *parent_queue = [NSOperationQueue currentQueue];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
@@ -280,64 +292,34 @@ static DataCortex *g_sharedDataCortex = nil;
 
 
     NSString *urlString = [NSString stringWithFormat:@"%@/1/track?current_time=%@",
-                           self->baseURL, [self getISO8601Date]];
+        self->baseURL, [self getISO8601Date]];
 
     NSURL *url = [NSURL URLWithString: urlString];
 
     NSMutableURLRequest *request = [NSMutableURLRequest
-                                    requestWithURL:url
-                                    cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                    timeoutInterval:HTTP_TIMEOUT];
+        requestWithURL:url
+        cachePolicy:NSURLRequestUseProtocolCachePolicy
+        timeoutInterval:HTTP_TIMEOUT];
 
     //TODO: check error
     NSError *error = nil;
     NSData *requestBody = [NSJSONSerialization dataWithJSONObject:dcRequest
-                                                          options:0 error:&error];
+        options:0 error:&error];
 
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:requestBody];
 
-    [NSURLConnection
-     sendAsynchronousRequest:request
-     queue:queue
-     completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-    {
+    [NSURLConnection sendAsynchronousRequest:request queue:queue
+        completionHandler:^(NSURLResponse *response,NSData *data,NSError *error) {
 
-         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-         NSInteger httpStatus = [httpResponse statusCode];
+             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+             NSInteger httpStatus = [httpResponse statusCode];
 
-         if (error != nil)
-         {
-             if (error.code == NSURLErrorTimedOut)
-             {
-                 // re-add to queue & retry
-                 NSLog(@"timed out");
-             }
-             NSLog(@"retry later");
-         }
-         else
-         {
-             if ([httpResponse statusCode] == 200)
-             {
-                 NSLog(@"Got OK");
-                 NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-             }
-             else
-             {
-                 NSLog(@"got %ld", (long)[httpResponse statusCode]);
-                 NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-             }
-
-         }
-
-        [parent_queue addOperationWithBlock:^{
-            completionHandler(httpStatus);
+            [parent_queue addOperationWithBlock:^{
+                completionHandler(httpStatus);
+            }];
         }];
-
-     }];
-
-
 }
 
 - (NSString *)userTag {
@@ -395,7 +377,7 @@ static DataCortex *g_sharedDataCortex = nil;
     self->_googleTag = [self _tagSave:newValue forTagName:@"googleTag"];
 }
 - (void)setGameCenterTag:(NSString *)newValue {
-    self->_gameCenterTag = [self _tagSave:newValue  forTagName:@"gameCenterTag"];
+    self->_gameCenterTag = [self _tagSave:newValue forTagName:@"gameCenterTag"];
 }
 
 - (void)setGroupTag:(NSString *)newValue {

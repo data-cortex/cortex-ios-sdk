@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name = "DataCortex"
-  s.version  = "1.0.0"
+  s.version  = "1.0.1"
   s.summary = "Data Cortex iOS SDK"
   s.description = "iOS SDK to interact with Data Cortex."
   s.homepage = "https://github.com/data-cortex/cortex-ios-sdk"
