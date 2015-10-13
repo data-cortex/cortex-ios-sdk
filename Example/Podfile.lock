@@ -1,0 +1,14 @@
+PODS:
+  - DataCortex (1.0.0)
+
+DEPENDENCIES:
+  - DataCortex (from `../`)
+
+EXTERNAL SOURCES:
+  DataCortex:
+    :path: ../
+
+SPEC CHECKSUMS:
+  DataCortex: f8a48dddd284542b0aaac3d40793e678e4011101
+
+COCOAPODS: 0.38.2
