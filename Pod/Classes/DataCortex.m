@@ -24,6 +24,7 @@ static NSString * const EVENT_LIST_KEY = @"data_cortex_eventList";
 static NSString * const DEVICE_TAG_KEY = @"data_cortex_deviceTag";
 static NSString * const USER_TAG_PREFIX_KEY = @"data_cortex_userTag";
 static NSString * const INSTALL_SENT_KEY = @"data_cortex_installSent";
+static NSString * const LAST_DAU_SEND_KEY = @"data_cortex_lastDAUSend";
 
 @implementation DataCortex {
     NSLock *runningLock;
@@ -41,6 +42,7 @@ static NSString * const INSTALL_SENT_KEY = @"data_cortex_installSent";
     NSMutableArray *eventList;
     NSDateFormatter *dateFormatter;
     NSDictionary *userTags;
+    NSDate *lastDAUSend;
 }
 
 @synthesize userTag = _userTag;
@@ -89,6 +91,10 @@ static DataCortex *g_sharedDataCortex = nil;
     if (self = [super init]) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
+        self->lastDAUSend = [defaults objectForKey:LAST_DAU_SEND_KEY];
+        if (!self->lastDAUSend) {
+            self->lastDAUSend = [NSDate distantPast];
+        }
         self->_userTag = [self getSavedUserTagWithName:@"userTag"];
         self->_facebookTag = [self getSavedUserTagWithName:@"facebookTag"];
         self->_twitterTag = [self getSavedUserTagWithName:@"twitterTag"];
@@ -134,13 +140,12 @@ static DataCortex *g_sharedDataCortex = nil;
             [defaults setBool:TRUE forKey:INSTALL_SENT_KEY];
             [defaults synchronize];
         }
+        [self maybeAddDAU];
 
         [self sendEvents];
     }
-
     return self;
 }
-
 - (void)dealloc {
     // never called.
 }
@@ -157,6 +162,16 @@ static DataCortex *g_sharedDataCortex = nil;
     }
 
     [self->eventLock unlock];
+}
+
+- (void)maybeAddDAU {
+    if ([self->lastDAUSend timeIntervalSinceNow] < -24*60*60) {
+        self->lastDAUSend = [NSDate date];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self->lastDAUSend forKey:LAST_DAU_SEND_KEY];
+
+        [self eventWithProperties:@{} forType:@"dau"];
+    }
 }
 
 - (NSString *)getISO8601Date {
@@ -199,7 +214,6 @@ static DataCortex *g_sharedDataCortex = nil;
         }
     }
 }
-
 
 - (void)addEvent:(NSObject *)event {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -488,6 +502,10 @@ static DataCortex *g_sharedDataCortex = nil;
             type,properties,spendCurrency,spendAmount];
     } else {
         [self errorWithFormat:@"failed to send event with type: %@ and properties: %@",type,properties];
+    }
+
+    if (![type isEqual:@"dau"]) {
+        [self maybeAddDAU];
     }
 }
 
