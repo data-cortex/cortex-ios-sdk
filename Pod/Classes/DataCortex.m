@@ -27,7 +27,9 @@ static NSString * const INSTALL_SENT_KEY = @"data_cortex_installSent";
 static NSString * const LAST_DAU_SEND_KEY = @"data_cortex_lastDAUSend";
 
 @implementation DataCortex {
-    NSLock *runningLock;
+    dispatch_queue_t sendQueue;
+
+    BOOL isSendRunning;
     NSLock *eventLock;
     NSString *apiKey;
     NSString *org;
@@ -89,6 +91,9 @@ static DataCortex *g_sharedDataCortex = nil;
 
 - (DataCortex *)initWithAPIKey:(NSString *)initApiKey forOrg:(NSString *)initOrg {
     if (self = [super init]) {
+        self->sendQueue = dispatch_queue_create("com.data-cortex.sendQueue",NULL);
+        self->isSendRunning = FALSE;
+
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
         self->lastDAUSend = [defaults objectForKey:LAST_DAU_SEND_KEY];
@@ -131,7 +136,6 @@ static DataCortex *g_sharedDataCortex = nil;
         [self->dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
 
         self->eventLock = [[NSLock alloc] init];
-        self->runningLock = [[NSLock alloc] init];
 
         [self initializeEventList];
 
@@ -179,40 +183,43 @@ static DataCortex *g_sharedDataCortex = nil;
 }
 
 - (void)sendEvents {
+    dispatch_async(self->sendQueue, ^{
+      if (!self->isSendRunning) {
+          self->isSendRunning = true;
+          __block NSArray *sendList = [self getSendEvents];
 
-    BOOL acquired = [self->runningLock tryLock];
-    if (acquired) {
+          if ([sendList count] > 0) {
+              [self postEvents:sendList completionHandler:^(NSInteger httpStatus) {
+                  dispatch_async(self->sendQueue, ^{
+                      BOOL sendDelayed = FALSE;
+                      if (httpStatus >= 200 && httpStatus <= 299) {
+                          [self removeEvents:sendList];
+                      } else if (httpStatus == 400) {
+                          [self removeEvents:sendList];
+                      } else if (httpStatus == 403) {
+                          [self error:@"Bad authentication, please check your API Key"];
+                          [self removeEvents:sendList];
+                      } else if (httpStatus == 409) {
+                          [self error:@"Conflict, dup send?"];
+                          [self removeEvents:sendList];
+                      } else {
+                          // Unknown error, lets just wait and try again.
+                          sendDelayed = TRUE;
+                      }
 
-        __block NSArray *sendList = [self getSendEvents];
-
-        if ([sendList count] > 0) {
-            [self postEvents:sendList completionHandler:^(NSInteger httpStatus) {
-                BOOL sendDelayed = TRUE;
-                if (httpStatus >= 200 && httpStatus <= 299) {
-                    [self removeEvents:sendList];
-                } else if (httpStatus == 400) {
-                    [self removeEvents:sendList];
-                } else if (httpStatus == 403) {
-                    [self error:@"Bad authentication, please check your API Key"];
-                    [self removeEvents:sendList];
-                } else if (httpStatus == 409) {
-                    [self error:@"Conflict, dup send?"];
-                    [self removeEvents:sendList];
-                } else {
-                    // Unknown error, lets just wait and try again.
-                    sendDelayed = true;
-                }
-                [self->runningLock unlock];
-                if (sendDelayed) {
-                    [self performSelector:@selector(sendEvents) withObject:nil afterDelay:DELAY_RETRY_INTERVAL];
-                } else {
-                    [self sendEvents];
-                }
-            }];
-        } else {
-            [self->runningLock unlock];
-        }
-    }
+                      self->isSendRunning = FALSE;
+                      if (sendDelayed) {
+                          [self performSelector:@selector(sendEvents) withObject:nil afterDelay:DELAY_RETRY_INTERVAL];
+                      } else {
+                          [self sendEvents];
+                      }
+                  });
+              }];
+          } else {
+              self->isSendRunning = FALSE;
+          }
+      }
+    });
 }
 
 - (void)addEvent:(NSObject *)event {
@@ -299,7 +306,6 @@ static DataCortex *g_sharedDataCortex = nil;
 }
 
 - (void)postEvents:(NSArray *)events completionHandler:(void (^) (NSInteger))completionHandler {
-    NSOperationQueue *parent_queue = [NSOperationQueue currentQueue];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
     NSDictionary *dcRequest = [self generateDCRequestWithEvents:events];
@@ -324,15 +330,12 @@ static DataCortex *g_sharedDataCortex = nil;
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:requestBody];
 
-    [NSURLConnection sendAsynchronousRequest:request queue:queue
+    [NSURLConnection sendAsynchronousRequest:request
+        queue:queue
         completionHandler:^(NSURLResponse *response,NSData *data,NSError *error) {
-
-             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-             NSInteger httpStatus = [httpResponse statusCode];
-
-            [parent_queue addOperationWithBlock:^{
-                completionHandler(httpStatus);
-            }];
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+            NSInteger httpStatus = [httpResponse statusCode];
+            completionHandler(httpStatus);
         }];
 }
 
