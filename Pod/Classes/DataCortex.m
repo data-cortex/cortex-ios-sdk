@@ -174,7 +174,7 @@ static DataCortex *g_sharedDataCortex = nil;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:self->lastDAUSend forKey:LAST_DAU_SEND_KEY];
 
-        [self eventWithProperties:@{} forType:@"dau"];
+        [self eventWithProperties:[NSDictionary dictionary] forType:@"dau"];
     }
 }
 
