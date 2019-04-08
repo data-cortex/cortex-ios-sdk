@@ -107,9 +107,14 @@ static DataCortex *g_sharedDataCortex = nil;
         self->_gameCenterTag = [self getSavedUserTagWithName:@"gameCenterTag"];
 
         self->deviceTag = [defaults objectForKey:DEVICE_TAG_KEY];
-        if (!self->deviceTag) {
+        if (!self->deviceTag || [self->deviceTag isEqualToString:@"00000000-0000-0000-0000-000000000000"]) {
             ASIdentifierManager *asiManager = [ASIdentifierManager sharedManager];
-            self->deviceTag = [[[asiManager advertisingIdentifier] UUIDString] copy];
+            if ([asiManager isAdvertisingTrackingEnabled]) {
+                self->deviceTag = [[[asiManager advertisingIdentifier] UUIDString] copy];
+            }
+            if (!self->deviceTag || [self->deviceTag isEqualToString:@"00000000-0000-0000-0000-000000000000"]) {
+                self->deviceTag = [[[[UIDevice currentDevice] identifierForVendor] UUIDString] copy];
+            }
             [defaults setObject:self->deviceTag forKey:DEVICE_TAG_KEY];
             [defaults synchronize];
         }
