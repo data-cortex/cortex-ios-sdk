@@ -67,9 +67,9 @@ Data Cortex to aggregate the user's usage across multiple devices and platforms.
   DataCortex *dc = [DataCortex sharedInstance];
 
   // User identified by Numeric ID
-  [dc addUserTag:@1234];
+  [dc setUserTag:@1234];
   // User identified by unique string
-  [dc addUserTag:@"xzy123"];
+  [dc setUserTag:@"xzy123"];
 ```
 
 # Event Tracking
