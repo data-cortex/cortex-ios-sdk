@@ -55,7 +55,15 @@ Generally you initialize the library in your AppDelegate.m file.
 //...
 
 }
+```
 
+You can also specify your DAU tracking time zone, otherwise we assume UTC.
+
+```objective-c
+  // Initialize the library with your DC_API_KEY
+  [DataCortex sharedInstanceWithAPIKey:YOUR_API_KEY
+                                forOrg:DC_ORG
+                           dauTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PST"]];
 ```
 
 # User tracking

@@ -9,6 +9,7 @@
 #import "DataCortex.h"
 @import AdSupport;
 
+static int const DAU_INTERVAL = 10 * 60;
 static int const DELAY_RETRY_INTERVAL = 30.0;
 static int const HTTP_TIMEOUT = 60.0;
 static NSString * const API_BASE_URL = @"https://api.data-cortex.com";
@@ -18,7 +19,6 @@ static int const SERVER_VER_MAX_LENGTH = 16;
 static int const GROUP_TAG_MAX_LENGTH = 32;
 static int const TAXONOMY_MAX_LENGTH = 32;
 static int const BATCH_COUNT = 10;
-
 
 static NSString * const EVENT_LIST_KEY = @"data_cortex_eventList";
 static NSString * const DEVICE_TAG_KEY = @"data_cortex_deviceTag";
@@ -43,6 +43,7 @@ static NSString * const LAST_DAU_SEND_KEY = @"data_cortex_lastDAUSend";
     NSString *country;
     NSMutableArray *eventList;
     NSDateFormatter *dateFormatter;
+    NSDateFormatter *dauDateFormatter;
     NSDictionary *userTags;
     NSDate *lastDAUSend;
 }
@@ -69,11 +70,15 @@ static DataCortex *g_sharedDataCortex = nil;
     NSLog(@"DC Error: %@",s);
 }
 
-
 + (DataCortex *)sharedInstanceWithAPIKey:(NSString *)apiKey forOrg:(NSString *)org {
+    return [DataCortex sharedInstanceWithAPIKey:apiKey forOrg:org dauTimeZone:nil];
+}
++ (DataCortex *)sharedInstanceWithAPIKey:(NSString *)apiKey
+                                  forOrg:(NSString *)org
+                             dauTimeZone:(NSTimeZone *)dauTimeZone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        g_sharedDataCortex = [[self alloc] initWithAPIKey:apiKey forOrg:org];
+        g_sharedDataCortex = [[self alloc] initWithAPIKey:apiKey forOrg:org dauTimeZone:dauTimeZone];
     });
     return g_sharedDataCortex;
 }
@@ -88,8 +93,9 @@ static DataCortex *g_sharedDataCortex = nil;
     NSString *key = [NSString stringWithFormat:@"%@_%@",USER_TAG_PREFIX_KEY,name];
     return [[NSUserDefaults standardUserDefaults] objectForKey:key];
 }
-
-- (DataCortex *)initWithAPIKey:(NSString *)initApiKey forOrg:(NSString *)initOrg {
+- (DataCortex *)initWithAPIKey:(NSString *)initApiKey
+                        forOrg:(NSString *)initOrg
+                   dauTimeZone:(NSTimeZone *)dauTimeZone {
     if (self = [super init]) {
         self->sendQueue = dispatch_queue_create("com.data-cortex.sendQueue",NULL);
         self->isSendRunning = FALSE;
@@ -140,6 +146,15 @@ static DataCortex *g_sharedDataCortex = nil;
         [self->dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
         [self->dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
 
+        self->dauDateFormatter = [[NSDateFormatter alloc] init];
+        [self->dauDateFormatter setLocale:enUSPOSIXLocale];
+        if (dauTimeZone) {
+            [self->dauDateFormatter setTimeZone:dauTimeZone];
+        } else {
+            [self->dauDateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+        }
+        [self->dauDateFormatter setDateFormat:@"yyyy-MM-dd"];
+
         self->eventLock = [[NSLock alloc] init];
 
         [self initializeEventList];
@@ -174,13 +189,18 @@ static DataCortex *g_sharedDataCortex = nil;
 }
 
 - (void)maybeAddDAU {
-    if ([self->lastDAUSend timeIntervalSinceNow] < -24*60*60) {
-        self->lastDAUSend = [NSDate date];
+    NSDate *now = [NSDate date];
+    NSString *lastSendString = [self->dauDateFormatter stringFromDate:self->lastDAUSend];
+    NSString *nowString = [self->dauDateFormatter stringFromDate:now];
+
+    if (![lastSendString isEqualToString:nowString]) {
+        self->lastDAUSend = now;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:self->lastDAUSend forKey:LAST_DAU_SEND_KEY];
 
         [self eventWithProperties:[NSDictionary dictionary] forType:@"dau"];
     }
+    [self performSelector:@selector(maybeAddDAU) withObject:nil afterDelay:DAU_INTERVAL];
 }
 
 - (NSString *)getISO8601Date {
@@ -510,10 +530,6 @@ static DataCortex *g_sharedDataCortex = nil;
             type,properties,spendCurrency,spendAmount];
     } else {
         [self errorWithFormat:@"failed to send event with type: %@ and properties: %@",type,properties];
-    }
-
-    if (![type isEqual:@"dau"]) {
-        [self maybeAddDAU];
     }
 }
 

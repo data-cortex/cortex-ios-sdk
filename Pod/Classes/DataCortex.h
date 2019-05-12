@@ -23,6 +23,9 @@
 
 + (DataCortex *)sharedInstance;
 + (DataCortex *)sharedInstanceWithAPIKey:(NSString *)apiKey forOrg:(NSString *)org;
++ (DataCortex *)sharedInstanceWithAPIKey:(NSString *)apiKey
+                                  forOrg:(NSString *)org
+                             dauTimeZone:(NSTimeZone *)tz;
 
 - (void)eventWithProperties:(NSDictionary *)properties;
 
